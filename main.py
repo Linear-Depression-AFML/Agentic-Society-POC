@@ -1,5 +1,6 @@
 from langchain.prompts import ChatPromptTemplate
 from langchain_ollama import OllamaLLM
+import ast
 
 PROMPT_TEMPLATE = """
 Welcome to civilization. You are citizens of a brand-new society on a distant island. 
@@ -30,7 +31,7 @@ This is the conversation so far:
 These are the laws so far:
 {laws}
 
-Follow the exact format as {laws}, only respond with the updated laws in a list and nothing else:
+Analyze the latest conversation and provide the updated laws as a List object. For example: ["law1", "law2", ...]. Only output the List object and nothing else.
 """
 
 OVERSEER_TEMPLATE_RESOURCES = """
@@ -43,7 +44,7 @@ This is the conversation so far:
 These are the resources so far:
 {resources}
 
-Follow the exact format as {resources}, only respond with the updated resources in the same format and nothing else:
+Analyze the latest conversation and provide the updated resource dictionary as a JSON object. For example: {{"wood": 150, "stone": 80, ...}}. Only output the JSON object and nothing else.
 """
 
 curie = OllamaLLM(model="mistral")
@@ -55,40 +56,48 @@ overseer_laws_prompt = ChatPromptTemplate.from_template(OVERSEER_TEMPLATE_LAWS)
 overseer_resources_prompt = ChatPromptTemplate.from_template(OVERSEER_TEMPLATE_RESOURCES)
 
 def run_day(state, day):
-    prompt_messages = prompt.format_messages(memory="", resources=state["resources"], rules=state["rules"], name="Alan", day=day)
-    response1 = curie.invoke(prompt_messages)
-    print("15%")
-    prompt_messages = prompt.format_messages(memory="\nCurie: " + response1, resources=state["resources"], rules=state["rules"], name="Rene", day=day)
-    response2 = rene.invoke(prompt_messages)
-    print("30%")
-    prompt_messages = prompt.format_messages(memory="\nCurie: " + response1 + "\nRene: " + response2, resources=state["resources"], rules=state["rules"], name="Rene", day=day)
-    response3 = curie.invoke(prompt_messages)
-    print("45%")
-    prompt_messages = prompt.format_messages(memory="\nCurie: " + response1 + "\nRene: " + response2 + "\nCurie: " + response3, resources=state["resources"], rules=state["rules"], name="Rene", day=day)
-    response4 = rene.invoke(prompt_messages)
-    print("60%")
-    state["memory"] += "\nCurie: " + response1 + "\nRene: " + response2 + "\nCurie: " + response3 + "\nRene: " + response4
+    agents = [curie, rene] 
+    conversation_today = ""
+    for i in range(4): # 4 turns per day
+        current_agent = agents[i % 2]
+        agent_name = "Curie" if i % 2 == 0 else "Rene"
+
+        prompt_messages = prompt.format_messages(
+            memory=state["memory"] + conversation_today, 
+            resources=state["resources"], 
+            rules=state["rules"], 
+            name=agent_name, 
+            day=day
+        )
+        response = current_agent.invoke(prompt_messages)
+
+        turn = f"\n{agent_name}: {response}"
+        conversation_today += turn
+        state["memory"] += turn
+
+        print(f"{(i+1) * 25}%") 
+
     laws_prompt = overseer_laws_prompt.format(laws=state["rules"], memory=state["memory"])
     resources_prompt = overseer_resources_prompt.format(resources=state["resources"], memory=state["memory"])
+    
     laws_response = overseer.invoke(laws_prompt)
-    print("75%")
     resources_response = overseer.invoke(resources_prompt)
-    print("100%")
-    return response1, response2, response3, response4, state, laws_response, resources_response
+    
+    return conversation_today, state, laws_response, resources_response
 
 state = {
     "resources": {"wood": 200, "stone": 100, "fresh water sources": 5, "fish": 50, "wild stock animals": 50, "faith": None, "technology": None, "tools": None, "population": 2},
-    "rules": [None],
+    "rules": [],
     "memory": ""
 }
 
 for day in range(10):
     print(f"Day {day + 1}:")
 
-    curie_res1, rene_res1, curie_res2, rene_res2, state, laws, resources = run_day(state,day+1)
+    convo, state, laws, resources = run_day(state,day+1)
  
-    state["rules"] = laws
-    state["resources"] = resources
+    state["rules"] = laws 
+    state["resources"] = resources 
     
     print(state["memory"])
     print("\nLaws so far:\n", state["rules"])
@@ -97,7 +106,7 @@ for day in range(10):
 
     with open("society_simulation.txt", "a") as f:
         f.write(f"Day {day + 1}:\n")
-        f.write(f"Conversation:\nCurie: {curie_res1}\nRene: {rene_res1}\nCurie: {curie_res2}\nRene: {rene_res2}\n")
+        f.write(f"Conversation:\n{convo}\n")
         f.write(f"Laws so far:\n{state['rules']}\n")
         f.write(f"Resources so far:\n{state['resources']}\n")
         f.write("\n" + "="*50 + "\n")
@@ -107,3 +116,4 @@ with open("society_simulation.txt", "a") as f:
     f.write(f"Laws: {state['rules']}\n")
     f.write(f"Resources: {state['resources']}\n")
     f.write(f"Complete Conversation:\n{state['memory']}\n")
+
