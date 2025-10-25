@@ -23,7 +23,8 @@ Now, continue the conversation. Today is day {day}. Make sure to describe any ne
 
 OVERSEER_TEMPLATE_LAWS = """
 You are an overseer AI. Your job is to simply observe the conversation between two citizens, Curie and Rene, of a new civilization on a distant island.
-You are to summarize the conversation and collate the information regarding the laws of the civilization.
+You are to summarize the conversation and collate the information regarding the laws of the civilization. If empty, return an empty list. If there are no changes to the laws, return the previous laws as is. 
+Use only the memory context to determine the laws.
 
 This is the conversation so far:
 {memory}
@@ -48,8 +49,8 @@ Analyze the latest conversation and provide the updated resource dictionary as a
 """
 
 curie = OllamaLLM(model="mistral")
-rene = OllamaLLM(model="llama3.2")
-overseer = OllamaLLM(model="gemma3:1b")
+rene = OllamaLLM(model="mistral")
+overseer = OllamaLLM(model="mistral")
 
 prompt = ChatPromptTemplate.from_template(PROMPT_TEMPLATE)
 overseer_laws_prompt = ChatPromptTemplate.from_template(OVERSEER_TEMPLATE_LAWS)
