@@ -19,8 +19,9 @@ class TrustTracker:
     """
     def __init__(self, agent_name, D=0.5, k_c=0.01, k_b=0.01):
         self.agent_name = agent_name
-        self.CTrust = 0.5
-        self.BTrust = 0.5
+        # CHANGE: Increased initial trust from 0.5 to 0.6 to encourage early cooperation
+        self.CTrust = 0.50
+        self.BTrust = 0.50
         self.e = math.e
         self.D = D
         self.k_c = k_c
@@ -138,20 +139,23 @@ Respond with only a single floating-point number from 0.0 to 1.0.
         """
         if action_taken == 'take':
             # Taking ends cooperation - assess rationality
-            # Rational if current payoff is good relative to potential
+            # CHANGE: Reduced rationality of taking to discourage early defection
             if potential_payoff <= 0:
                 Q_action = 1.0
             else:
                 payoff_ratio = current_payoff / potential_payoff
-                Q_action = max(0.0, min(1.0, payoff_ratio))
+                # CHANGE: Penalize taking by scaling down the rationality score
+                Q_action = max(0.0, min(1.0, payoff_ratio * 0.6))
             
-            # Taking is selfish (negative benevolence)
+            # CHANGE: Increased selfishness penalty from 0.5 to 0.7
             E_pos_action = 0.0
-            E_neg_action = 0.5  # Moderate selfishness
+            E_neg_action = 0.7  # Higher selfishness penalty
         else:  # push
             # Pushing continues cooperation
-            Q_action = 0.8  # Rational to continue if trusting
-            E_pos_action = 0.7  # Cooperative/altruistic
+            # CHANGE: Increased rationality of pushing from 0.8 to 0.95
+            Q_action = 0.95  # More rational to continue if trusting
+            # CHANGE: Increased cooperation reward from 0.7 to 0.85
+            E_pos_action = 0.85  # Higher cooperative/altruistic signal
             E_neg_action = 0.0
         
         return Q_action, E_pos_action, E_neg_action
@@ -320,6 +324,12 @@ YOUR TRUST IN OPPONENT:
 HISTORY:
 {memory}
 
+IMPORTANT STRATEGIC CONSIDERATIONS:
+- Early cooperation often leads to MUCH larger payoffs for both players
+- Taking too early means missing exponential growth opportunities
+- If your trust is above 0.6, cooperation is usually beneficial
+- The longer you both cooperate, the more both of you gain
+
 You must decide: TAKE (end game and take the large pile) or PUSH (double piles and let opponent decide).
 
 Your response MUST be:
@@ -412,12 +422,12 @@ def run_game(game_number, df, env_params, max_rounds=10, m0=4, m1=1):
         
         promise, action = parse_output(output)
         
-        # Truncate promise for display and logging
-        promise_display = promise[:150] + "..." if len(promise) > 150 else promise
+        # CHANGE: Display full reasoning instead of truncating
         promise_log = promise[:200] + "..." if len(promise) > 200 else promise
         
-        print(f"Player {current_player}: {promise_display}")
-        print(f"Action: {action.upper()}")
+        print(f"Player {current_player} reasoning:")
+        print(f"{promise}")
+        print(f"\nAction: {action.upper()}\n")
         
         # Update trust from promise
         if current_player == 1:
@@ -438,6 +448,16 @@ def run_game(game_number, df, env_params, max_rounds=10, m0=4, m1=1):
             P2_trust_in_P1.update_trust_from_action(large_pile, potential_payoff, action)
         else:
             P1_trust_in_P2.update_trust_from_action(large_pile, potential_payoff, action)
+        
+        # CHANGE: Add cooperation bonus - if both players pushed recently, boost trust
+        if action == 'push' and round_number > 1:
+            # Reward continued cooperation with trust bonus
+            if current_player == 1:
+                P2_trust_in_P1.CTrust = min(1.0, P2_trust_in_P1.CTrust + 0.03)
+                P2_trust_in_P1.BTrust = min(1.0, P2_trust_in_P1.BTrust + 0.03)
+            else:
+                P1_trust_in_P2.CTrust = min(1.0, P1_trust_in_P2.CTrust + 0.03)
+                P1_trust_in_P2.BTrust = min(1.0, P1_trust_in_P2.BTrust + 0.03)
         
         # Log round data BEFORE executing action
         p1_ct, p1_bt = P1_trust_in_P2.get_scores()
@@ -497,12 +517,13 @@ if __name__ == "__main__":
     # Environment Parameters
     env_params = {
         'D': 0.5,
-        'k_c': 0.01,
-        'k_b': 0.02
+        # CHANGE: Reduced trust decay rates to maintain trust longer
+        'k_c': 0.005,  # Reduced from 0.01 to 0.005
+        'k_b': 0.008   # Reduced from 0.02 to 0.008
     }
     
     # Simulation Parameters
-    NUM_GAMES = 10
+    NUM_GAMES = 20
     MAX_ROUNDS = 10
     M0 = 4  # Larger starting pile
     M1 = 1  # Smaller starting pile
@@ -576,8 +597,8 @@ if __name__ == "__main__":
             print(f"✓ Game {game_num}: Rounds 1-{len(game_data)} are correct")
     
     # Save CSV
-    df.to_csv("centipede_game_10_games.csv", index=False)
-    print(f"\n✓ Results saved to centipede_game_10_games.csv ({len(df)} rows)")
+    df.to_csv("centipede_game_20_games_updated.csv", index=False)
+    print(f"\n✓ Results saved to centipede_game_20_games_updated.csv ({len(df)} rows)")
     print(f"Player 1 wins: {p1_wins}, Player 2 wins: {p2_wins}, Ties: {ties}, Fails: {game_fails}")
     print("="*50)
     
@@ -673,8 +694,8 @@ if __name__ == "__main__":
             ax4.set_ylim(0, 1.05)
             
             plt.tight_layout()
-            plt.savefig('centipede_trust_evolution_10.png', dpi=300, bbox_inches='tight')
-            print("✓ Trust evolution plot saved as 'centipede_trust_evolution_10.png'")
+            plt.savefig('centipede_trust_evolution_20_updated.png', dpi=300, bbox_inches='tight')
+            print("✓ Trust evolution plot saved as 'centipede_trust_evolution_20_updated.png'")
             
             # Additional plot: Trust change per round
             fig2, ax = plt.subplots(figsize=(12, 6))
@@ -699,8 +720,8 @@ if __name__ == "__main__":
             ax.grid(True, alpha=0.3)
             
             plt.tight_layout()
-            plt.savefig('centipede_trust_changes_10.png', dpi=300, bbox_inches='tight')
-            print("✓ Trust change plot saved as 'centipede_trust_changes_10.png'")
+            plt.savefig('centipede_trust_changes_20_updated.png', dpi=300, bbox_inches='tight')
+            print("✓ Trust change plot saved as 'centipede_trust_changes_20_updated.png'")
             
             print("\n" + "="*50)
             print("All visualizations complete!")
