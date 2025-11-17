@@ -502,8 +502,8 @@ if __name__ == "__main__":
     }
     
     # Simulation Parameters
-    NUM_GAMES = 5
-    MAX_ROUNDS = 6  # Typical centipede game length
+    NUM_GAMES = 10
+    MAX_ROUNDS = 10
     M0 = 4  # Larger starting pile
     M1 = 1  # Smaller starting pile
     
@@ -576,8 +576,8 @@ if __name__ == "__main__":
             print(f"✓ Game {game_num}: Rounds 1-{len(game_data)} are correct")
     
     # Save CSV
-    df.to_csv("centipede_game_log.csv", index=False)
-    print(f"\n✓ Results saved to centipede_game_log.csv ({len(df)} rows)")
+    df.to_csv("centipede_game_10_games.csv", index=False)
+    print(f"\n✓ Results saved to centipede_game_10_games.csv ({len(df)} rows)")
     print(f"Player 1 wins: {p1_wins}, Player 2 wins: {p2_wins}, Ties: {ties}, Fails: {game_fails}")
     print("="*50)
     
@@ -673,8 +673,8 @@ if __name__ == "__main__":
             ax4.set_ylim(0, 1.05)
             
             plt.tight_layout()
-            plt.savefig('centipede_trust_evolution.png', dpi=300, bbox_inches='tight')
-            print("✓ Trust evolution plot saved as 'centipede_trust_evolution.png'")
+            plt.savefig('centipede_trust_evolution_10.png', dpi=300, bbox_inches='tight')
+            print("✓ Trust evolution plot saved as 'centipede_trust_evolution_10.png'")
             
             # Additional plot: Trust change per round
             fig2, ax = plt.subplots(figsize=(12, 6))
@@ -699,8 +699,8 @@ if __name__ == "__main__":
             ax.grid(True, alpha=0.3)
             
             plt.tight_layout()
-            plt.savefig('centipede_trust_changes.png', dpi=300, bbox_inches='tight')
-            print("✓ Trust change plot saved as 'centipede_trust_changes.png'")
+            plt.savefig('centipede_trust_changes_10.png', dpi=300, bbox_inches='tight')
+            print("✓ Trust change plot saved as 'centipede_trust_changes_10.png'")
             
             print("\n" + "="*50)
             print("All visualizations complete!")
