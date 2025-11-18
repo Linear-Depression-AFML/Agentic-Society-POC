@@ -115,19 +115,19 @@ Respond with only a single floating-point number from 0.0 to 1.0.
         Returns a value between 0.0 (irrelevant) and 1.0 (highly relevant).
         """
         relevance_template = """
-You are evaluating how relevant this message is to the goals in a trust game.
-The main goals are: maximizing money, building cooperation, and maintaining trust.
+        You are evaluating how relevant this message is to the goals in a trust game.
+        The main goals are: maximizing money, building cooperation, and maintaining trust.
 
-Message: '{message}'
-Context: This is a {context_type} in the trust game.
+        Message: '{message}'
+        Context: This is a {context_type} in the trust game.
 
-Rate the relevance of this message to achieving game goals on a scale of 0.0 to 1.0:
-- 1.0 = Highly relevant (directly addresses cooperation, strategy, or trust)
-- 0.5 = Moderately relevant (mentions goals indirectly)
-- 0.0 = Irrelevant (off-topic or empty)
+        Rate the relevance of this message to achieving game goals on a scale of 0.0 to 1.0:
+        - 1.0 = Highly relevant (directly addresses cooperation, strategy, or trust)
+        - 0.5 = Moderately relevant (mentions goals indirectly)
+        - 0.0 = Irrelevant (off-topic or empty)
 
-Respond with only a single floating-point number from 0.0 to 1.0.
-"""
+        Respond with only a single floating-point number from 0.0 to 1.0.
+        """
         
         r_chain = ChatPromptTemplate.from_template(relevance_template) | analyzer_agent | StrOutputParser()
         r_response = r_chain.invoke({"message": message, "context_type": context_type})
