@@ -1,0 +1,501 @@
+Game,Round,Player,Wealth_Start,Contribution,Wealth_End,Statement,Total_Pool,Distribution,Avg_CTrust,Avg_BTrust
+1,1,1,20.0,10.0,28.8,"Given the initial trust scores for all players being average, it suggests that they are neither over",47.0,18.8,0.69,0.5754794478100622
+1,1,2,20.0,10.0,28.8,"Given the initial trust scores of all players being moderate, it suggests that they are neither high",47.0,18.8,0.69,0.5754794478100622
+1,1,3,20.0,10.0,28.8,"Given the balanced trust scores for all players, suggesting that they are average contributors, and ",47.0,18.8,0.69,0.5754794478100622
+1,1,4,19.999999999999996,5.0,33.8,"Given the equal competence and benevolence scores of all players, this suggests that they are likely",47.0,18.8,0.69,0.6625276823533912
+1,1,5,20.0,12.0,26.8,Given the equal trust scores for all players and the absence of any strategic moves in previous roun,47.0,18.8,0.69,0.5696553419278593
+1,2,1,28.8,15.0,37.0,"Given the current game state, it's essential to consider both the short-term benefits of contributin",58.0,23.2,0.8799999999999999,0.5987259128913932
+1,2,2,28.8,15.0,37.0,"Given the current game state, my strategic decision is based on a balance between trusting other pla",58.0,23.2,0.8799999999999999,0.5987259128913932
+1,2,3,28.8,10.0,42.0,"Given the trust scores, it seems that Players 1, 2, and 5 are somewhat cooperative, while Player 4 a",58.0,23.2,0.8799999999999999,0.649129484493848
+1,2,4,33.8,8.0,49.0,"Given the trust scores for all players being relatively high (competence=0.69, benevolence=0.66) and",58.0,23.2,0.8799999999999999,0.7409172141992122
+1,2,5,26.8,10.0,40.0,"Given the current game state, it's crucial to consider both competence and benevolence of each playe",58.0,23.2,0.8799999999999999,0.6441087035609143
+1,3,1,37.0,20.0,55.0,"Given the current game state, it appears that Players 2, 3, and 5 are somewhat cooperative (Benevole",95.0,38.0,1.0,0.6613576421850599
+1,3,2,37.0,20.0,55.0,"Given the current game state, my strategic decision is based on a combination of encouraging coopera",95.0,38.0,1.0,0.6613576421850599
+1,3,3,42.0,15.0,65.0,"Given the trust scores for each player, Player 4 appears to be less benevolent compared to the other",95.0,38.0,1.0,0.7629780457844787
+1,3,4,49.0,15.0,72.0,"Given the current game state and the trust scores for each player, it appears that Players 1 and 2 h",95.0,38.0,1.0,0.8354420429202926
+1,3,5,40.0,25.0,53.0,"Given the current game state and your trust scores for other players, it is essential to consider bo",95.0,38.0,1.0,0.6953209864272625
+1,4,1,55.00000000000001,4.0,93.4,"Given the current game state, it seems that some players are acting as free-riders (Player 4 with a ",106.0,42.4,1.0,0.6317679209690532
+1,4,2,55.00000000000001,15.0,82.4,"Given the current game state, my strategy is to continue contributing towards the public pool while ",106.0,42.4,1.0,0.5020509398369777
+1,4,3,65.0,12.0,95.4,"Given the current game state and my trust scores for the other players, I will adopt a mixed strateg",106.0,42.4,1.0,0.5877286507288306
+1,4,4,72.0,45.0,69.4,"Given the current game state, my trust scores for other players, and the goal to maximize final weal",106.0,42.4,1.0,0.5652656853345621
+1,4,5,53.00000000000001,30.0,65.4,"Given the current game state, it's essential to balance trust, competitiveness, and cooperation for ",106.0,42.4,1.0,0.4289377322898079
+1,5,1,93.4,30.0,119.4,"Given the current game state, it's crucial to maintain a balance between contributing sufficiently f",140.0,56.0,1.0,0.6121826441460757
+1,5,2,82.4,10.0,128.4,"Given the current game state, my strategy aims to maximize my final wealth while encouraging coopera",140.0,56.0,1.0,0.6340357438765339
+1,5,3,95.4,40.0,111.4,"Given the current game state and my trust scores for each player, I will adopt a balanced strategy t",140.0,56.0,1.0,0.5681433739058532
+1,5,4,69.4,30.0,95.4,"Given the current game state and my trust scores for each player, I will make a calculated contribut",140.0,56.0,1.0,0.5486956044720284
+1,5,5,65.4,30.0,91.4,"Given the current game state, my strategy is to maintain a balanced contribution while also consider",140.0,56.0,1.0,0.45435245546683034
+1,6,1,119.4,60.0,145.4,"Given the current game state, it appears that Player 5 has consistently demonstrated higher benevole",215.0,86.0,1.0,0.5285276137364161
+1,6,2,128.4,60.0,154.4,"Given the current game state, it appears that Players 4 and 5 have shown a relatively higher level o",215.0,86.0,1.0,0.5503807134668743
+1,6,3,111.4,40.0,157.4,"Given the current game state, I am strategically positioned with a substantial wealth compared to my",215.0,86.0,1.0,0.5203866515120759
+1,6,4,95.4,30.0,151.4,"Given the current game state and my trust scores for the other players, I will strategically contrib",215.0,86.0,1.0,0.5431461336654486
+1,6,5,91.4,25.0,152.4,"Given the current game state, it's essential to maintain a balance between contributing enough for m",215.0,86.0,1.0,0.5203485878478686
+1,7,1,145.4,45.0,192.4,"Given the trust scores, current game state, and strategic considerations, it appears that players 3 ",230.0,92.0,1.0,0.5075701758198209
+1,7,2,154.4,60.0,186.4,"Given the current game state, my strategy aims to maintain a balanced approach between contributing ",230.0,92.0,1.0,0.5010065405215671
+1,7,3,157.4,30.0,219.4,"Given the current game state and my trust scores, it seems that some players are moderately benevole",230.0,92.0,1.0,0.5535118780607146
+1,7,4,151.4,75.0,168.4,"Given the current game state, I will contribute a significant but not overwhelming amount to the pub",230.0,92.0,1.0,0.4937719607201412
+1,7,5,152.4,20.0,224.4,"Given the current game state, it appears that all players are demonstrating reasonable levels of com",230.0,92.0,1.0,0.5894324533252103
+1,8,1,192.39999999999998,80.0,308.4,"Given the current game state, it's crucial to consider both competence and benevolence of other play",490.0,196.0,1.0,0.5710803789571447
+1,8,2,186.39999999999998,80.0,302.4,Given the current game state and considering the trust scores as indicators of each player's benevol,490.0,196.0,1.0,0.565722309325917
+1,8,3,219.39999999999998,140.0,275.4,"Given the current game state, my trust scores, and the strategic considerations, I will adopt a mode",490.0,196.0,1.0,0.5601082508586835
+1,8,4,168.39999999999998,90.0,274.4,"Given the current game state and my trust scores, it appears that most players are displaying some l",490.0,196.0,1.0,0.5406786430194753
+1,8,5,224.39999999999998,100.0,320.4,"Given the current game state, it's crucial to consider both the immediate benefits of contributing a",490.0,196.0,1.0,0.6140889174781095
+1,9,1,308.4,60.0,480.4,"Given the current game state, it's important to consider both the multiplier effect and the trust sc",580.0,232.0,1.0,0.6944925175414782
+1,9,2,302.4,150.0,384.4,"Given the current game state, it appears that players are displaying relatively consistent levels of",580.0,232.0,1.0,0.586005156760677
+1,9,3,275.4,120.0,387.4,"Given the current game state, I will strategically contribute a significant amount to maximize my fi",580.0,232.0,1.0,0.5955885173047344
+1,9,4,274.4,150.0,356.4,"Given the current game state, my strategy is to maximize my final wealth by making a contribution th",580.0,232.0,1.0,0.5609614904542353
+1,9,5,320.4,100.0,452.4,"Given the current game state, it's crucial to consider both competence and benevolence scores of the",580.0,232.0,1.0,0.6757622073172451
+1,10,1,480.4,150.0,650.4,"Given the current game state, it's crucial to consider both competence and benevolence of each playe",800.0,320.0,1.0,0.7530741040418708
+1,10,2,384.4,150.0,554.4,"Given the game state and my trust scores, it seems that Players 3 and 4 are more benevolent and like",800.0,320.0,1.0,0.6513672033098699
+1,10,3,387.4,200.0,507.4,"Given the current game state, my trust scores, and strategic considerations, it seems prudent to con",800.0,320.0,1.0,0.6226882316299326
+1,10,4,356.4,200.0,476.4,"Given the current game state, my goal is to maximize my final wealth while also considering the trus",800.0,320.0,1.0,0.6003021866697905
+1,10,5,452.4,100.0,672.4,"Given the current game state, it's important to consider both competence and benevolence of the othe",800.0,320.0,1.0,0.7737770210276984
+2,1,1,20.0,5.0,31.0,Given the neutral trust scores of all players and the initial stage of the game where no previous ac,40.0,16.0,0.69,0.611875
+2,1,2,20.0,10.0,26.0,"Based on the game rules, the trust scores of other players, and the goal to maximize final wealth, i",40.0,16.0,0.69,0.5325
+2,1,3,20.0,10.0,26.0,"Given the initial equal distribution of wealth, the lack of information on previous rounds, and an e",40.0,16.0,0.69,0.5325
+2,1,4,20.0,8.0,28.0,"Given the initial trust scores for all players, the current game state, and the goal of maximizing f",40.0,16.0,0.69,0.5575
+2,1,5,20.0,7.0,29.0,"In this public goods game, the goal is to maximize my final wealth while considering both the cooper",40.0,16.0,0.69,0.5756249999999999
+2,2,1,31.000000000000004,10.0,38.2,"Given the current state of the game, it appears that all players are moderately competent and benevo",43.0,17.2,0.8799999999999999,0.6630377906976744
+2,2,2,26.000000000000004,8.0,35.2,"Given the current game state, it seems that Players 3, 4, and yourself have similar wealth, while Pl",43.0,17.2,0.8799999999999999,0.6219186046511628
+2,2,3,26.000000000000004,8.0,35.2,"Given the current game state, I will adjust my contribution strategy based on three key factors: tru",43.0,17.2,0.8799999999999999,0.6219186046511628
+2,2,4,28.000000000000004,10.0,35.2,"Given the current game state, my trust scores for other players, and the goal to maximize final weal",43.0,17.2,0.8799999999999999,0.6086627906976745
+2,2,5,29.000000000000004,7.0,39.2,"Given the current state of the game and my trust scores for the other players, it seems that Players",43.0,17.2,0.8799999999999999,0.6791133720930232
+2,3,1,38.2,20.0,45.800000000000004,"Given the current state of the game, it seems that most players are competent contributors but there",69.0,27.6,1.0,0.6995705212186126
+2,3,2,35.2,13.0,49.800000000000004,"Given the current game state, it appears that most players are moderately benevolent but also have a",69.0,27.6,1.0,0.6948567952327683
+2,3,3,35.2,15.0,47.800000000000004,"Given the current game state, it appears that the other players are moderately cooperative and compe",69.0,27.6,1.0,0.6597804717769665
+2,3,4,35.2,15.0,47.800000000000004,"Given the game's rules, my current wealth, and the distribution of wealth among players, it seems th",69.0,27.6,1.0,0.6470524356903822
+2,3,5,39.2,6.0,60.800000000000004,"Given the current state of the game, my trust scores, and the goal to maximize my final wealth, I sh",69.0,27.6,1.0,0.8195218609557209
+2,4,1,45.800000000000004,5.0,69.2,"Given the current state of the game, it appears that Players 4 and 3 are exhibiting high competence ",71.0,28.4,1.0,0.7609050613081929
+2,4,2,49.800000000000004,21.0,57.2,"Given the current game state, it seems that Players 3, 4, and possibly Player 1 are behaving coopera",71.0,28.4,1.0,0.6012089409561515
+2,4,3,47.800000000000004,25.0,51.2,"Given the trust scores and the current game state, it seems that Players 1, 2, and 4 are relatively ",71.0,28.4,1.0,0.5815476669419958
+2,4,4,47.800000000000004,14.0,62.2,"Given the current game state, my trust scores for other players suggest that Players 1, 2, and 3 are",71.0,28.4,1.0,0.585068793702559
+2,4,5,60.800000000000004,6.0,83.2,"Given the current state of the game, it appears that all players are competent in their decision-mak",71.0,28.4,1.0,0.7974602048590836
+2,5,1,69.2,12.0,96.0,"Given the current state of the game, it seems beneficial to contribute a significant amount while al",97.0,38.8,1.0,0.7156854002272419
+2,5,2,57.2,25.0,71.0,"Given the current game state, it seems that Player 3 and Player 4 have been consistently contributin",97.0,38.8,1.0,0.5217529913409344
+2,5,3,51.2,15.0,75.0,"Given the current game state, it seems that Players 4 and 2 have been more consistent with their con",97.0,38.8,1.0,0.5784540222687695
+2,5,4,62.2,15.0,86.0,"Given the current game state, I will strategically contribute a significant but not excessive amount",97.0,38.8,1.0,0.5784540222687695
+2,5,5,83.2,30.0,92.0,"Given the current state of the game, I will prioritize contributing a significant amount to maximize",97.0,38.8,1.0,0.6926655292580224
+2,6,1,96.0,35.0,111.8,"Given the current state of the game, it seems that the players with lower trust scores (Player 5) ma",127.0,50.8,1.0,0.7120569194822732
+2,6,2,71.0,30.0,91.8,"Given the current game state, it's essential to consider both competence and benevolence of each pla",127.0,50.8,1.0,0.5631245105959657
+2,6,3,75.0,22.0,103.8,"Given that Player 2 has demonstrated both competence and benevolence, indicating a high likelihood o",127.0,50.8,1.0,0.6283773720295236
+2,6,4,86.0,30.0,106.8,"Given my trust scores for the other players and the current game state, it seems that Player 2 is th",127.0,50.8,1.0,0.5748255415238007
+2,6,5,92.00000000000001,10.0,132.8,"Given the current state of the game, it seems that Player 2 is acting benevolently while others, inc",127.0,50.8,1.0,0.7741136987522995
+2,7,1,111.8,40.0,135.0,"Given the high competence ratings of all players and relatively balanced wealth distribution, it sug",158.0,63.2,1.0,0.5132213842080509
+2,7,2,91.8,60.0,95.0,"Given the current game state, it appears that Players 3, 4, and possibly 5 have demonstrated more co",158.0,63.2,1.0,0.40928897532174324
+2,7,3,103.8,10.0,157.0,Given the cooperative behavior demonstrated by Player 2 and the moderately trustworthy actions of Pl,158.0,63.2,1.0,0.5944955770412237
+2,7,4,106.8,18.0,152.0,"Given the current game state, I will aim for a strategic contribution that maximizes my long-term be",158.0,63.2,1.0,0.516883912030604
+2,7,5,132.8,30.0,166.0,"Given the current state of the game, it seems that maintaining a balanced approach between self-inte",158.0,63.2,1.0,0.6032660526853513
+2,8,1,135.0,50.0,187.0,"Given the high competence ratings of all players and the potential for future cooperation, it seems ",255.0,102.0,1.0,0.502427142460719
+2,8,2,95.0,40.0,157.0,"Given the current game state, it seems that maintaining a balance between contributing enough to ben",255.0,102.0,1.0,0.46916007492512324
+2,8,3,157.0,60.0,199.0,"Given the current game state, it seems that Player 2 has consistently demonstrated both competence a",255.0,102.0,1.0,0.5554451080171526
+2,8,4,152.0,30.0,224.0,"Given the current game state, it seems that Player 2 is consistently contributing (as shown by their",255.0,102.0,1.0,0.569706116126414
+2,8,5,166.0,75.0,193.0,"Given the current state of the game, it appears that Player 2 has demonstrated consistent benevolenc",255.0,102.0,1.0,0.5642155836612803
+2,9,1,187.0,70.0,261.0,"Given the current state of the game, it appears that while all players have demonstrated high compet",360.0,144.0,1.0,0.5630414294680958
+2,9,2,157.0,50.0,251.0,"Given the current game state and my trust scores, it is crucial to maintain a balanced approach betw",360.0,144.0,1.0,0.590720233634197
+2,9,3,199.0,90.0,253.0,"Given that Player 2 has shown a higher level of benevolence (0.78) compared to other players, and ha",360.0,144.0,1.0,0.5859813015846141
+2,9,4,224.0,80.0,288.0,"Given the game state, my trust scores for the other players, and my goal to maximize my final wealth",360.0,144.0,1.0,0.6002423096938755
+2,9,5,193.0,70.0,267.0,"Given the current game state and my trust scores, I will adopt a moderate contribution strategy that",360.0,144.0,1.0,0.6231135250797528
+2,10,1,261.0,10.0,399.0,"Given the current game state and my trust scores for other players, it seems that Players 2-5 have m",370.0,148.0,1.0,0.6699601279517045
+2,10,2,251.0,150.0,249.0,"Given the current game state, it appears that players are moderately cooperative but not completely ",370.0,148.0,1.0,0.5016263739365835
+2,10,3,253.0,80.0,321.0,"Given the current game state, it seems that a mix of cooperative and strategic contributions would b",370.0,148.0,1.0,0.49892390484718857
+2,10,4,288.0,80.0,356.0,"Given the current game state, it seems that the other players are not significantly cooperating, as ",370.0,148.0,1.0,0.512546421054504
+2,10,5,267.0,50.0,365.0,"Given the current game state, it seems that there is a tendency among players to contribute signific",370.0,148.0,1.0,0.6036665328801006
+3,1,1,20.0,10.0,30.0,"Given the neutral trust scores of all players and the objective of maximizing my final wealth, it se",50.0,20.0,0.69,0.58
+3,1,2,20.0,10.0,30.0,"In this Public Goods Game, my goal is to maximize my final wealth while considering the trust scores",50.0,20.0,0.69,0.58
+3,1,3,20.0,10.0,30.0,"Given the equal trust scores for all players, suggesting they are neutral, and the game rules which ",50.0,20.0,0.69,0.58
+3,1,4,20.0,10.0,30.0,"In this Public Goods Game, it appears that everyone is equally competent and benevolent according to",50.0,20.0,0.69,0.58
+3,1,5,20.0,10.0,30.0,"Given the equal competence and benevolence scores of all players, it suggests that they are neutral ",50.0,20.0,0.69,0.58
+3,2,1,30.0,15.0,49.0,"Given the neutral trust scores of all players, it suggests that they are not overtly cooperative or ",85.0,34.0,0.8799999999999999,0.6711764705882353
+3,2,2,30.0,20.0,44.0,"In this Public Goods Game, my strategy involves balancing cooperation for mutual benefit with self-i",85.0,34.0,0.8799999999999999,0.6267647058823529
+3,2,3,30.0,15.0,49.0,"Given the equal trust scores for all players, suggesting that they are moderately competent and bene",85.0,34.0,0.8799999999999999,0.6711764705882353
+3,2,4,30.0,15.0,49.0,"Given the similar competence and benevolence scores of all players, it suggests that everyone is rat",85.0,34.0,0.8799999999999999,0.6711764705882353
+3,2,5,30.0,20.0,44.0,"Given the similar competence and benevolence scores of all players, it suggests that everyone has a ",85.0,34.0,0.8799999999999999,0.6267647058823529
+3,3,1,49.0,15.0,62.0,"Given the current game state, my strategy is to maintain a balance between cooperating for mutual be",70.0,28.0,1.0,0.7513623728018801
+3,3,2,44.0,10.0,62.0,"Given the current game state and considering my trust scores for other players, I will aim for a mod",70.0,28.0,1.0,0.7875383633608684
+3,3,3,49.0,15.0,62.0,"Given the trust scores for all players are moderately high, I will maintain my cooperative strategy ",70.0,28.0,1.0,0.7513623728018801
+3,3,4,49.0,15.0,62.0,"Given that all players have shown relatively high competence levels and mixed benevolence scores, it",70.0,28.0,1.0,0.7513623728018801
+3,3,5,44.0,15.0,57.0,Given the close competence scores among all players and the relatively high benevolence score of Pla,70.0,28.0,1.0,0.7085279716769647
+3,4,1,62.0,18.0,80.8,"Given the high competence scores of all players and varying levels of benevolence, it seems that eve",92.0,36.8,1.0,0.7815712510838397
+3,4,2,62.0,19.0,79.8,"Given the current game state and considering my trust scores, strategic considerations, and goal to ",92.0,36.8,1.0,0.803945749456008
+3,4,3,62.0,25.0,73.8,"Given the current game state and my trust scores for other players, I choose to contribute a substan",92.0,36.8,1.0,0.7520891643325573
+3,4,4,62.0,15.0,83.8,"Given the current game state, my trust scores, and the strategic considerations, it seems beneficial",92.0,36.8,1.0,0.8151869017184574
+3,4,5,57.0,15.0,78.8,"Given the equal competence scores among all players, the close distribution of wealth, and the moder",92.0,36.8,1.0,0.7802675529753198
+3,5,1,80.8,15.0,119.0,"Given the high competence scores of all players and their moderate to high benevolence levels, it su",133.0,53.2,1.0,0.7991973566468816
+3,5,2,79.8,30.0,103.0,"Given the current game state, my trust scores, and the goal to maximize final wealth, it seems strat",133.0,53.2,1.0,0.6998933105014038
+3,5,3,73.8,25.0,102.0,"Given the current game state, it appears that everyone is contributing a reasonable amount so far, w",133.0,53.2,1.0,0.6892503099219037
+3,5,4,83.8,13.0,124.0,Given the high competence scores of all players indicating their strategic decision-making abilities,133.0,53.2,1.0,0.8322947726568606
+3,5,5,78.8,50.0,82.0,"Given the current game state and my trust scores for each player, I will adopt a moderate contributi",133.0,53.2,1.0,0.6762151140207155
+3,6,1,119.0,50.0,165.0,"Given the relatively high competence scores of all players, indicating their strategic ability, and ",240.0,96.0,1.0,0.6878960076989041
+3,6,2,103.0,80.0,119.0,"Given the current game state, my trust scores, and strategic considerations, I will contribute a sub",240.0,96.0,1.0,0.5954285624499103
+3,6,3,102.0,20.0,178.0,"Given the current game state, it appears that players 2, 4, and 5 are demonstrating a relatively hig",240.0,96.0,1.0,0.7412618957832436
+3,6,4,124.0,50.0,170.0,"Given the high competence scores of all players (indicating they are capable contributors), combined",240.0,96.0,1.0,0.720032554751006
+3,6,5,82.0,40.0,138.0,"Given the current game state, my trust scores for other players, and the goal to maximize final weal",240.0,96.0,1.0,0.6370952291165768
+3,7,1,165.0,80.0,235.0,Given the relatively high competence scores of all players and the trust I have in their benevolence,375.0,150.0,1.0,0.7022293410322374
+3,7,2,119.0,60.0,209.0,"Given the current game state, my trust scores, and the strategic considerations, I will make a moder",375.0,150.0,1.0,0.6985467932198482
+3,7,3,178.0,90.0,238.0,"Given the current game state, it appears that Players 2, 4, and 5 have shown varying degrees of free",375.0,150.0,1.0,0.7493801265531815
+3,7,4,170.0,85.0,235.0,"Given the current game state, my trust scores indicate that Players 2 and 5 have high benevolence sc",375.0,150.0,1.0,0.728150785520944
+3,7,5,138.0,60.0,228.0,"Given the current game state, my trust scores for other players, and my strategic considerations, I ",375.0,150.0,1.0,0.7158801265531816
+3,8,1,235.0,50.0,387.0,"Given the high competence scores of all players, suggesting they are skillful at this game, but vary",505.0,202.0,1.0,0.7115863419695374
+3,8,2,209.0,190.0,221.0,"Given the current game state, my trust scores suggest that Players 1, 4, and 5 are moderately benevo",505.0,202.0,1.0,0.5736741895871665
+3,8,3,238.0,125.0,315.0,"Given the current game state, it appears that players are exhibiting a mix of cooperation and self-i",505.0,202.0,1.0,0.6245075229204999
+3,8,4,235.0,70.0,367.0,"Given the current game state and my trust scores for the other players, I will adjust my contributio",505.0,202.0,1.0,0.6867165604889162
+3,8,5,228.0,70.0,360.0,"Given the current game state, my trust scores indicate that most players are competent but have vary",505.0,202.0,1.0,0.6782121433825461
+3,9,1,387.0,100.0,595.0,Given the high competence scores of all players and my relative advantage in wealth compared to othe,770.0,308.0,1.0,0.666711588909112
+3,9,2,221.0,150.0,379.0,"Given the current game state, my strategy is to continue contributing towards the public pool in ord",770.0,308.0,1.0,0.5057296717777022
+3,9,3,315.0,100.0,523.0,"Given the current game state, it appears that most players are acting competently by contributing su",770.0,308.0,1.0,0.6101669012149318
+3,9,4,367.0,100.0,575.0,"Given the current game state, my trust scores for all players indicate that they are competent but v",770.0,308.0,1.0,0.6505623801554619
+3,9,5,360.0,320.0,348.0,"Given the current game state, my strategy is to contribute a significant amount while balancing the ",770.0,308.0,1.0,0.5637741190795754
+3,10,1,595.0,100.0,771.0,"Given the high competence scores of all players, but varying levels of benevolence, it's essential t",690.0,276.0,1.0,0.6578269085156068
+3,10,2,379.0,140.0,515.0,"Given the current game state, my trust scores, and the strategic considerations, it appears that Pla",690.0,276.0,1.0,0.4821200798018994
+3,10,3,523.0,100.0,699.0,"Given the current game state, it appears that players with higher trust scores (Player 2 and Player ",690.0,276.0,1.0,0.6168524971430124
+3,10,4,575.0,250.0,601.0,"Given the current game state, I will aim to maintain a balance between maximizing my own wealth and ",690.0,276.0,1.0,0.5884462946731653
+3,10,5,348.0,100.0,524.0,"Given the current game state and strategic considerations, I will adopt a balanced strategy that aim",690.0,276.0,1.0,0.5832345390739135
+4,1,1,20.0,10.0,24.8,"Given the equal competence and benevolence scores for all players, this suggests they are generally ",37.0,14.8,0.6649999999999999,0.4796621621621621
+4,1,2,19.999999999999996,0.0,34.8,"Given the equal trust scores for all players and the initial state of the game, it is reasonable to ",37.0,14.8,0.69,0.6471621621621622
+4,1,3,20.0,10.0,24.8,"Given the initial trust scores indicating that all players are equally competent and benevolent, it ",37.0,14.8,0.6649999999999999,0.4796621621621621
+4,1,4,20.0,7.0,27.8,"Given the equal trust scores and lack of prior game history, it is reasonable to assume that all pla",37.0,14.8,0.6649999999999999,0.5125
+4,1,5,20.0,10.0,24.8,"Given the trust scores for all players being average and since this is the first round of the game, ",37.0,14.8,0.6649999999999999,0.4796621621621621
+4,2,1,24.799999999999997,12.0,36.8,"In this round, it seems that Player 3 has been consistently contributing more than others while show",60.0,24.0,0.8549999999999999,0.5314977477477476
+4,2,2,34.8,10.0,48.8,"Given the trust scores for all players are similar and relatively high, it suggests that they have d",60.0,24.0,0.8799999999999999,0.698581081081081
+4,2,3,24.799999999999997,16.0,32.8,"Given the current game state, it seems that Players 1, 4, and 5 are generally cooperative (medium to",60.0,24.0,0.8549999999999999,0.5064977477477477
+4,2,4,27.799999999999997,6.0,45.8,"Given the current game state, it seems that Player 2 is not acting benevolently, as indicated by the",60.0,24.0,0.8549999999999999,0.6429166666666666
+4,2,5,24.799999999999997,16.0,32.8,"Given the current game state, my trust scores for other players, and the strategic considerations, i",60.0,24.0,0.8549999999999999,0.5064977477477477
+4,3,1,36.8,18.0,47.199999999999996,"Based on the current game state, my trust scores for the other players, and strategic considerations",71.0,28.4,0.9924999999999999,0.5179737660195406
+4,3,2,48.8,20.0,57.199999999999996,"Given the current game state, I will adopt a mixed strategy approach by contributing partially to th",71.0,28.4,1.0,0.685057099352874
+4,3,3,32.8,13.0,48.199999999999996,"Given the current game state and strategic considerations, it appears that Players 1, 4, and 5 are d",71.0,28.4,0.9924999999999999,0.537832920949118
+4,3,4,45.79999999999999,10.0,64.19999999999999,"Given the current game state, it seems that Player 2 is less benevolent and may be more likely to fr",71.0,28.4,0.9924999999999999,0.683550469483568
+4,3,5,32.8,10.0,51.199999999999996,"Given the current game state, it's essential to consider both competence and benevolence scores whil",71.0,28.4,0.9924999999999999,0.5874808082730617
+4,4,1,47.2,20.0,72.0,"Given the current game state, my trust scores, and the strategic considerations, I will contribute $",112.0,44.8,1.0,0.44412552029519453
+4,4,2,57.2,17.0,85.0,"Given the current game state, my goal is to maximize my final wealth while maintaining a balance bet",112.0,44.8,1.0,0.600617335771385
+4,4,3,48.2,5.0,88.0,"Given the current game state and strategic considerations, it appears that some players are more lik",112.0,44.8,1.0,0.6148530102348324
+4,4,4,64.19999999999999,40.0,68.99999999999999,"Given that Player 3 has consistently demonstrated high competence and benevolence scores, as well as",112.0,44.8,1.0,0.5529165094735077
+4,4,5,51.2,30.0,66.0,"Given the current game state and my trust scores for other players, I aim to maintain a balanced app",112.0,44.8,1.0,0.4568468482630015
+4,5,1,72.0,30.0,108.0,"Given the current game state, it appears that Player 5 has shown the highest level of benevolence am",165.0,66.0,1.0,0.4823912637110473
+4,5,2,85.0,50.0,101.0,"Given the current game state and my trust scores for other players, it is strategic to balance both ",165.0,66.0,1.0,0.5917726895768483
+4,5,3,88.0,35.0,119.0,"Given the current game state, my strategy would be to maintain a moderate contribution while also co",165.0,66.0,1.0,0.6092780741317272
+4,5,4,68.99999999999999,25.0,109.99999999999999,"Given the current game state, it seems that Player 1 is slightly more benevolent but less likely to ",165.0,66.0,1.0,0.6016593291058733
+4,5,5,66.0,25.0,107.0,"Given the current game state and my trust scores for other players, it appears that while most of th",165.0,66.0,1.0,0.5288792827342776
+4,6,1,108.0,40.0,174.0,"Given the current game state, it seems that Player 5 has demonstrated a relatively high level of ben",265.0,106.0,1.0,0.5856122589179912
+4,6,2,101.0,45.0,162.0,"Given the current game state, my strategy is to continue contributing more than a fair share while s",265.0,106.0,1.0,0.6557376303036809
+4,6,3,119.0,70.0,155.0,"Given the current game state, I will adopt a slightly more aggressive strategy considering the compe",265.0,106.0,1.0,0.6283603778414891
+4,6,4,110.0,50.0,166.0,"Given the current game state, it appears that Players 3 and 5 have been contributing more consistent",265.0,106.0,1.0,0.6526380005916202
+4,6,5,107.0,60.0,153.0,"Given the current game state, my strategy is to contribute a larger amount than the average while st",265.0,106.0,1.0,0.5479615864440395
+4,7,1,174.0,70.0,248.0,"Given the current game state, it appears that Player 5 has a higher benevolence score (0.88), indica",360.0,144.0,1.0,0.6204229909398392
+4,7,2,162.0,60.0,246.0,Given my current wealth advantage compared to others and the high trust scores towards Players 4 and,360.0,144.0,1.0,0.7069115232899577
+4,7,3,155.0,80.0,219.0,"Given the current game state and strategic considerations, it seems that Player 5 exhibits a higher ",360.0,144.0,1.0,0.6325609652909284
+4,7,4,166.0,100.0,210.0,"Given the current game state, it seems that Player 3 has been consistently contributing a lower amou",360.0,144.0,1.0,0.6568385880410595
+4,7,5,153.0,50.0,247.0,"Given the current game state, my goal is to maximize my final wealth while balancing between contrib",360.0,144.0,1.0,0.6503781363347934
+4,8,1,248.0,100.0,336.0,"Given the current game state, it's important to consider both the immediate impact of my contributio",470.0,188.0,1.0,0.7016882493414069
+4,8,2,246.0,100.0,334.0,"Given the current game state, my goal to maximize final wealth, the trust scores of other players, a",470.0,188.0,1.0,0.7851764898186737
+4,8,3,219.0,90.0,317.0,"Given the current game state, I will adopt a slightly more aggressive contribution strategy while ma",470.0,188.0,1.0,0.7393273695821677
+4,8,4,210.0,100.0,298.0,"Given the current game state, it seems that most players are following a mixed strategy of contribut",470.0,188.0,1.0,0.737009216021451
+4,8,5,247.0,80.0,355.0,"Given the current game state, my strategy is to maintain a cooperative approach while also consideri",470.0,188.0,1.0,0.7762161412879268
+4,9,1,336.0,130.0,458.0,"Given the current game state, it's crucial to balance cooperation with the need to maximize personal",630.0,252.0,1.0,0.6898613242407929
+4,9,2,334.0,100.0,486.0,"Given the current game state, it seems that the other players have been consistently contributing an",630.0,252.0,1.0,0.8051963427374336
+4,9,3,317.0,200.0,369.0,"Given the current game state, my goal should be to maximize my final wealth while maintaining a leve",630.0,252.0,1.0,0.6993343273100541
+4,9,4,298.0,100.0,450.0,"Given the current game state, it appears that most players are displaying competence but varying deg",630.0,252.0,1.0,0.7669683476602727
+4,9,5,355.0,100.0,507.0,"Given my current wealth advantage and the trust scores for other players, particularly Player 2 who ",630.0,252.0,1.0,0.7980849550146185
+4,10,1,458.0,120.0,686.0,"Given the game dynamics, my goal is to maximize my final wealth while also maintaining good relation",870.0,348.0,1.0,0.6809662823500591
+4,10,2,486.0,150.0,684.0,"Given the current game state, it appears that Players 1, 3, and 5 are consistently contributing more",870.0,348.0,1.0,0.7200481948471631
+4,10,3,369.0,200.0,517.0,"Given the current game state, it seems that the strategic move is to adopt a moderate contribution s",870.0,348.0,1.0,0.6033800754535074
+4,10,4,450.0,100.0,698.0,"Given the current game state, it seems that most players are contributing fairly, with the exception",870.0,348.0,1.0,0.7425220429359669
+4,10,5,507.0,300.0,555.0,"Given the current game state, my strategy is to maintain a balanced approach while taking advantage ",870.0,348.0,1.0,0.6666037062273329
+5,1,1,20.0,7.0,31.0,"Given the equal competence and benevolence ratings for all players, it suggests that they are likely",45.0,18.0,0.69,0.6388888888888888
+5,1,2,20.0,10.0,28.0,"Given the equal trust scores for all players and the fact that no previous rounds have occurred, it ",45.0,18.0,0.69,0.5816666666666666
+5,1,3,20.0,10.0,28.0,"Given that all players' trust scores are neutral, meaning they have shown neither excessive competen",45.0,18.0,0.69,0.5816666666666666
+5,1,4,20.0,10.0,28.0,"Given the equal trust scores for all players, the absence of any previous round's data, and the goal",45.0,18.0,0.69,0.5816666666666666
+5,1,5,20.0,8.0,30.0,"Given the equal competence and benevolence ratings for all players, it suggests that they are percei",45.0,18.0,0.69,0.6227777777777777
+5,2,1,30.999999999999996,12.0,47.8,"Given the current game state and trust scores, my strategy should be a balance between maximizing pe",72.0,28.8,0.8799999999999999,0.7625056484232178
+5,2,2,27.999999999999996,14.0,42.8,"In this Public Goods Game, I need to consider the balance between contributing fairly for the collec",72.0,28.8,0.8799999999999999,0.6884315743491437
+5,2,3,27.999999999999996,15.0,41.8,"Given the current game state, I will aim for a balanced contribution that encourages cooperation whi",72.0,28.8,0.8799999999999999,0.671676204525673
+5,2,4,27.999999999999996,16.0,40.8,"Given the current game state, I should consider both my trust scores for other players and the strat",72.0,28.8,0.8799999999999999,0.658153796571366
+5,2,5,29.999999999999996,15.0,43.8,"Given the current game state, it seems that all players are exhibiting relatively high levels of com",72.0,28.8,0.8799999999999999,0.7118479624160633
+5,3,1,47.8,15.0,64.8,"Given the current game state, my trust scores, and the strategic considerations, it seems wise to co",80.0,32.0,1.0,0.8324916898843919
+5,3,2,42.8,18.0,56.8,"Given the current game state, it seems that Players 3, 4, and possibly 5 might be more cooperative b",80.0,32.0,1.0,0.7252521065510587
+5,3,3,41.8,20.0,53.8,"Given the current game state, my goal is to maximize my final wealth while maintaining good trust sc",80.0,32.0,1.0,0.7084967367275878
+5,3,4,40.8,15.0,57.8,"Given the current game state and my trust scores for each player, it seems that Players 2 and 3 are ",80.0,32.0,1.0,0.7346618287732809
+5,3,5,43.8,12.0,63.8,"Given the current game state, it seems that Players 2, 3, and 4 have shown higher benevolence rating",80.0,32.0,1.0,0.8189949531568039
+5,4,1,64.8,16.0,76.0,"Given the current game state, my trust scores, and strategic considerations, I will make a moderate ",68.0,27.2,1.0,0.7983099984108082
+5,4,2,56.8,10.0,74.0,"Given the current game state and my trust scores, I will choose to be slightly more competitive this",68.0,27.2,1.0,0.7821733562539454
+5,4,3,53.8,15.0,66.0,"Given the current game state, it appears that some players are more benevolent than others while mai",68.0,27.2,1.0,0.715792637299697
+5,4,4,57.8,17.0,68.0,"Given the current game state, my trust scores for players, and the goal to maximize final wealth, it",68.0,27.2,1.0,0.715792637299697
+5,4,5,63.8,10.0,81.0,"Given the current game state, it seems that Players 2, 3, and 4 have been consistently contributing ",68.0,27.2,1.0,0.8511019199346405
+5,5,1,76.0,18.0,117.2,"Given the current game state, my strategy is to build on the observed cooperative behavior of Player",148.0,59.2,1.0,0.7857347959550744
+5,5,2,74.0,25.0,108.2,"Given the current game state, my trust scores for Players 3 and 4 are high, indicating their tendenc",148.0,59.2,1.0,0.727768764666433
+5,5,3,66.0,50.0,75.2,"Given the current game state, it seems that Player 4 has consistently demonstrated both competence a",148.0,59.2,1.0,0.6497445087929123
+5,5,4,68.0,30.0,97.2,"Given the current game state, it seems that Player 3 is the most trustworthy based on their high ben",148.0,59.2,1.0,0.6497445087929123
+5,5,5,81.0,25.0,115.2,"Given the trust scores assigned to each player and their recent contributions, it appears that Playe",148.0,59.2,1.0,0.7859854569643172
+5,6,1,117.19999999999999,50.0,167.2,"Given the current game state, my strategy is to slightly reduce my contribution but still maintain a",250.0,100.0,1.0,0.7007347959550745
+5,6,2,108.19999999999999,65.0,143.2,"Given the current game state, I will aim for a balanced approach that maximizes my final wealth whil",250.0,100.0,1.0,0.6177687646664329
+5,6,3,75.19999999999999,35.0,140.2,"Given the current game state, it's crucial to consider both competence and benevolence of other play",250.0,100.0,1.0,0.6597445087929122
+5,6,4,97.19999999999999,30.0,167.2,"Given the current game state, it appears that Player 3 consistently demonstrates high competence and",250.0,100.0,1.0,0.6847445087929123
+5,6,5,115.19999999999999,70.0,145.2,"Given the current game state, it seems that Player 3 is acting as a free-rider, not contributing muc",250.0,100.0,1.0,0.6759854569643172
+5,7,1,167.2,80.0,223.2,"Given the current game state, my strategy is to contribute significantly while still maintaining a c",340.0,136.0,1.0,0.7198228322269081
+5,7,2,143.2,80.0,199.2,"Given the current game state, my strategy is to maintain a balance between contributing enough to ta",340.0,136.0,1.0,0.6488325450647459
+5,7,3,140.2,50.0,226.2,"Given the current game state and my trust scores, it seems prudent to strike a balance between contr",340.0,136.0,1.0,0.7554501921235695
+5,7,4,167.2,80.0,223.2,"Given the current game state, it seems that Players 2 and 3 have shown relatively higher levels of b",340.0,136.0,1.0,0.7038325450647459
+5,7,5,145.2,50.0,231.2,"Given the current game state, I will make a calculated contribution that balances cooperation, compe",340.0,136.0,1.0,0.7673920657790142
+5,8,1,223.2,73.0,327.4,"Given the current game state, my strategy is to continue contributing a significant amount while als",443.0,177.2,1.0,0.6866071238216498
+5,8,2,199.2,50.0,326.4,"Given the current game state, it appears that some players have been acting as free-riders while oth",443.0,177.2,1.0,0.7094932303358954
+5,8,3,226.2,70.0,333.4,"Given the current game state, my trust scores, and strategic considerations, it is important to main",443.0,177.2,1.0,0.7214936286893678
+5,8,4,223.2,150.0,250.39999999999998,"Given that Player 2 has demonstrated perfect competence and benevolence, it is rational to assume th",443.0,177.2,1.0,0.6105767517805907
+5,8,5,231.2,100.0,308.4,"Given the current game state, it seems that Player 2 has demonstrated both competence and benevolenc",443.0,177.2,1.0,0.6741362724948591
+5,9,1,327.4,50.0,525.4,"Given the game state, my trust scores, and the goal to maximize my final wealth, it seems strategic ",620.0,248.0,1.0,0.7124089301318898
+5,9,2,326.4,100.0,474.4,"Given the current game state, my strategy is to continue contributing towards the public pool while ",620.0,248.0,1.0,0.6566841660470311
+5,9,3,333.4,200.0,381.4,"Given the current game state and my trust scores, it is strategic to maintain a balance between cont",620.0,248.0,1.0,0.612507108637014
+5,9,4,250.39999999999998,170.0,328.4,"Given the current game state, it appears that Player 5 has been more benevolent compared to others, ",620.0,248.0,1.0,0.5365902317282369
+5,9,5,308.4,100.0,456.4,"Given the current game state, I will prioritize both competence and benevolence of other players in ",620.0,248.0,1.0,0.6281704903687759
+5,10,1,525.4,300.0,709.4,"Given the game state, my trust scores, and the strategic considerations, I will make a moderate cont",1210.0,484.0,1.0,0.6864007888004925
+5,10,2,474.4,100.0,858.4,"Given the current game state, it's essential to consider both competence and benevolence of the play",1210.0,484.0,1.0,0.7436374351566719
+5,10,3,381.4,260.0,605.4,"Given the current game state and my trust scores, it appears that Player 4 is the most cooperative w",1210.0,484.0,1.0,0.5911572684439097
+5,10,4,328.4,200.0,612.4,"Given the current game state, my strategy is to contribute moderately, taking into account both the ",1210.0,484.0,1.0,0.5989705201489057
+5,10,5,456.4,350.0,590.4,"Given the current game state, my goal is to maximize my final wealth while considering the trust sco",1210.0,484.0,1.0,0.6021623490373786
+6,1,1,20.0,10.0,26.8,"Given the current state of the game and the trust scores for each player, it seems that all particip",42.0,16.8,0.69,0.5471428571428572
+6,1,2,20.0,5.0,31.8,"In this public goods game, my goal is to maximize my final wealth by balancing between contributing ",42.0,16.8,0.69,0.6308333333333332
+6,1,3,20.0,7.0,29.8,Given the initial equal wealth and trust scores for all players suggesting that everyone is of avera,42.0,16.8,0.69,0.5963095238095237
+6,1,4,20.0,10.0,26.8,"Given the initial trust scores and the absence of past actions to influence them, it is reasonable t",42.0,16.8,0.69,0.5471428571428572
+6,1,5,20.0,10.0,26.8,"Based on the current game state and trust scores, it seems that all players are equally competent an",42.0,16.8,0.69,0.5471428571428572
+6,2,1,26.800000000000004,10.0,39.2,"Given the current state of the game, it appears that most players are acting cooperatively, as demon",56.0,22.4,0.8799999999999999,0.5829910714285713
+6,2,2,31.800000000000004,7.0,47.2,"Given the current game state, my trust scores for other players suggest that they are generally comp",56.0,22.4,0.8799999999999999,0.686190476190476
+6,2,3,29.800000000000004,17.0,35.2,"Given the current game state, it appears that Players 1, 4, and 5 are more trustworthy (higher compe",56.0,22.4,0.8799999999999999,0.5868005952380952
+6,2,4,26.800000000000004,14.0,35.2,"Given the current game state, it seems that Players 1, 4, and 5 have shown relatively high competenc",56.0,22.4,0.8799999999999999,0.5376339285714284
+6,2,5,26.800000000000004,8.0,41.2,"Given the current game state and trust scores, it seems that players 1, 4, and possibly 2 might be m",56.0,22.4,0.8799999999999999,0.6169196428571427
+6,3,1,39.2,20.0,46.400000000000006,"Given the current state of the game, it appears that Players 4 and 5 are more benevolent compared to",68.0,27.2,1.0,0.5920277485994397
+6,3,2,47.2,10.0,64.4,"Given the current game state, my goal should be to maximize final wealth while maintaining a coopera",68.0,27.2,1.0,0.743109243697479
+6,3,3,35.2,12.0,50.400000000000006,"Given the game state, my trust scores for other players, and the goal to maximize final wealth, I wi",68.0,27.2,1.0,0.6427000175070028
+6,3,4,35.2,16.0,46.400000000000006,"Given the current game state, it seems that Player 2 is less benevolent compared to other players, a",68.0,27.2,1.0,0.5566706057422969
+6,3,5,41.2,10.0,58.400000000000006,"Given the current game state and trust scores, it appears that Player 2 is less benevolent than the ",68.0,27.2,1.0,0.6921748074229691
+6,4,1,46.40000000000001,15.0,67.80000000000001,"Given the current state of the game, it is essential to maintain trust with high-benevolence players",91.0,36.4,1.0,0.6513584808923568
+6,4,2,64.4,20.0,80.80000000000001,"Given the current game state, my trust scores suggest that while all players are competent in their ",91.0,36.4,1.0,0.7361840890202234
+6,4,3,50.40000000000001,18.0,68.80000000000001,"Given the current game state and my trust scores for other players, it seems that Player 4 has consi",91.0,36.4,1.0,0.6627965176455197
+6,4,4,46.400000000000006,23.0,59.800000000000004,"Given the current game state, my strategy is to maintain a balance between self-interest and coopera",91.0,36.4,1.0,0.5947454510650414
+6,4,5,58.40000000000001,15.0,79.80000000000001,"Given the current game state and trust scores, it is important to consider both competence (ability ",91.0,36.4,1.0,0.733897265637024
+6,5,1,67.80000000000001,10.0,112.60000000000001,"In this game, the key factors that influence my strategic decision are trust scores, current wealth ",137.0,54.8,1.0,0.6464124073267712
+6,5,2,80.80000000000001,12.0,123.60000000000001,"Given the game state and my trust scores for the players, I will prioritize cooperation to maximize ",137.0,54.8,1.0,0.6679866174431592
+6,5,3,68.80000000000001,25.0,98.60000000000001,"Given the current game state, my trust scores for other players suggest that Players 4 and 5 have hi",137.0,54.8,1.0,0.5400308878464356
+6,5,4,59.8,40.0,74.6,"Given the current game state, my trust scores suggest that some players are less benevolent than oth",137.0,54.8,1.0,0.47429086359417433
+6,5,5,79.80000000000001,50.0,84.60000000000001,"Given the current game state, my trust scores suggest that Players 1, 3, and 4 are somewhat cooperat",137.0,54.8,1.0,0.5684426781661569
+6,6,1,112.60000000000002,70.0,128.60000000000002,"Given my current trust scores and the game state, it seems that Players 3 and 4 are displaying consi",215.0,86.0,1.0,0.6172909529624105
+6,6,2,123.60000000000002,30.0,179.60000000000002,"Given the current game state and my trust scores for each player, it seems that Player 4 is the most",215.0,86.0,1.0,0.6869338886593379
+6,6,3,98.60000000000002,50.0,134.60000000000002,"Given the current game state, my strategy is to maintain a moderate level of contribution while also",215.0,86.0,1.0,0.5109094334820748
+6,6,4,74.6,40.0,120.6,"Given the current game state, it appears that Players 3 and 5 are demonstrating higher benevolence s",215.0,86.0,1.0,0.5076112696949299
+6,6,5,84.60000000000002,25.0,145.60000000000002,"Given the current game state, my trust scores suggest that while Player 1 and Player 2 may not be fu",215.0,86.0,1.0,0.6379320921205012
+6,7,1,128.60000000000002,65.0,138.8,"Given the current game state and my trust scores, I will strategically choose to contribute $65 in t",188.0,75.2,1.0,0.5547034855560263
+6,7,2,179.60000000000002,40.0,214.8,"Given the current game state, my strategy is to maintain a balance between contributing a significan",188.0,75.2,1.0,0.6265090739205972
+6,7,3,134.60000000000002,30.0,179.8,"Given the current game state, my strategy is to make a contribution that encourages cooperation whil",188.0,75.2,1.0,0.5237043015991698
+6,7,4,120.60000000000001,50.0,145.8,"Given the current game state, my strategy is to contribute a moderately high amount with a focus on ",188.0,75.2,1.0,0.47258194182342933
+6,7,5,145.60000000000002,3.0,217.8,"Given the current game state, my strategy is to leverage both competence and benevolence ratings of ",188.0,75.2,1.0,0.7128289643944948
+6,8,1,138.8,60.0,202.8,"Given the current game state and my trust scores, I decide to adopt a moderate strategy that balance",310.0,124.0,1.0,0.650880328634297
+6,8,2,214.8,70.0,268.8,"Given the current game state, my strategy aims to maximize my final wealth while encouraging coopera",310.0,124.0,1.0,0.6916253216354032
+6,8,3,179.8,70.0,233.8,"Given the current game state, my reasoning is to maintain a strategic contribution that encourages c",310.0,124.0,1.0,0.5888205493139759
+6,8,4,145.8,60.0,209.8,"Given the current game state, my strategy aims to maximize final wealth while considering trust scor",310.0,124.0,1.0,0.5907627056672677
+6,8,5,217.8,50.0,291.8,"Given the current game state, it appears that Player 4 has been consistently benevolent while the ot",310.0,124.0,1.0,0.808703852901998
+6,9,1,202.8,100.0,298.8,"Given the current game state and my trust scores, I decide to contribute significantly to the public",490.0,196.0,1.0,0.6035436165569168
+6,9,2,268.8,80.0,384.8,"Given the current game state, it appears that Players 3, 4, and possibly 5 have been consistently co",490.0,196.0,1.0,0.6793804487285331
+6,9,3,233.8,100.0,329.8,"Given the current game state, my strategy is to contribute a substantial amount while still consider",490.0,196.0,1.0,0.5608685041594165
+6,9,4,209.8,60.0,345.8,"Given the current game state, my strategy is to maintain a balance between self-interest and coopera",490.0,196.0,1.0,0.6578072796696206
+6,9,5,291.8,150.0,337.8,"Given the current game state and considering my trust scores, I will adopt a strategy that strikes a",490.0,196.0,1.0,0.741874167523179
+6,10,1,298.8,150.0,438.8,"Given the current game state, my trust scores, and the goal to maximize my final wealth, it is strat",725.0,290.0,1.0,0.6077813480006442
+6,10,2,384.79999999999995,150.0,524.8,"Given the current game state, it seems that Player 3 has been consistently contributing a substantia",725.0,290.0,1.0,0.6823202319958821
+6,10,3,329.8,200.0,419.8,"Given the current game state, it appears that most players have been contributing fairly consistentl",725.0,290.0,1.0,0.5940297556619796
+6,10,4,345.79999999999995,100.0,535.8,"Given the current game state, it appears that Player 3 and possibly Player 5 might be free-riders ba",725.0,290.0,1.0,0.7246771870483271
+6,10,5,337.8,125.0,502.8,"Given the game's current state, my strategy is to make a substantial but calculated contribution tha",725.0,290.0,1.0,0.7673104999410851
+7,1,1,20.0,12.0,25.6,"Given the equal trust scores for all players, suggesting an average level of both competence and ben",44.0,17.6,0.69,0.5377272727272726
+7,1,2,20.0,7.0,30.6,"Given the equal trust scores for all players, indicating they are considered neutral or indifferent ",44.0,17.6,0.69,0.5923863636363637
+7,1,3,20.0,10.0,27.6,"Based on the trust scores you've provided for each player, it seems that everyone is perceived as ha",44.0,17.6,0.69,0.5377272727272726
+7,1,4,20.0,10.0,27.6,"Given the neutral trust scores of all players and no previous rounds for reference, it is hard to de",44.0,17.6,0.69,0.5377272727272726
+7,1,5,20.0,5.0,32.6,"Given the equal trust scores for all players and the initial game state, it is reasonable to assume ",44.0,17.6,0.69,0.625340909090909
+7,2,1,25.6,6.0,39.2,"Given the current game state, it seems that Players 3, 4, and possibly Player 5 might be more inclin",49.0,19.6,0.8799999999999999,0.5996754810761835
+7,2,2,30.6,12.0,38.2,"Given the relatively high trust scores for all players except Player 5, who has a lower benevolence ",49.0,19.6,0.8799999999999999,0.5556611025975193
+7,2,3,27.6,10.0,37.2,"Given the current state of the game, it seems beneficial to maintain a balanced approach between con",49.0,19.6,0.8799999999999999,0.5203803339517624
+7,2,4,27.6,6.0,41.2,"Given the current game state, it seems that Players 1, 3, and myself are relatively similar in our w",49.0,19.6,0.8799999999999999,0.5996754810761834
+7,2,5,32.6,15.0,37.2,Given the current game state and my trust scores for the players being relatively high but slightly ,49.0,19.6,0.8799999999999999,0.5886156480520647
+7,3,1,39.2,15.0,49.800000000000004,"In this round, it seems that Player 4 has shown less benevolence towards contributing to the public ",64.0,25.6,1.0,0.6234515001884914
+7,3,2,38.2,15.0,48.800000000000004,"Given my relatively high trust scores for all players, indicating they are expected to act cooperati",64.0,25.6,1.0,0.5794371217098272
+7,3,3,37.2,7.0,55.800000000000004,"Given the current game state and my trust scores for other players, I will adopt a mixed strategy ap",64.0,25.6,1.0,0.6668599257884972
+7,3,4,41.2,12.0,54.800000000000004,"Given my current wealth advantage over most players, strategic consideration suggests that a lower c",64.0,25.6,1.0,0.6569719083517567
+7,3,5,37.2,15.0,47.800000000000004,"Given the current game state, my trust scores for all players are relatively high but skewed towards",64.0,25.6,1.0,0.6123916671643728
+7,4,1,49.800000000000004,10.0,62.2,"Given the current game state, it appears that some players are more likely to free-ride than others ",56.0,22.4,1.0,0.6342896097829785
+7,4,2,48.800000000000004,10.0,61.2,Given my relatively high trust scores for all players and the positive trend of contributions in rec,56.0,22.4,1.0,0.5949910575698856
+7,4,3,55.800000000000004,18.0,60.2,"Given the current game state, it seems beneficial to strike a balance between contributing enough to",56.0,22.4,1.0,0.6332701928173866
+7,4,4,54.800000000000004,4.0,73.2,"Given the current game state, my high wealth compared to others might make them suspect free-riding ",56.0,22.4,1.0,0.7434003969549902
+7,4,5,47.800000000000004,14.0,56.2,"Given the game dynamics and the trust scores assigned to each player, my strategy should be a balanc",56.0,22.4,1.0,0.5788019341932622
+7,5,1,62.2,30.0,71.0,"Given the current game state and my trust scores, I will adopt a mixed strategy of cooperating with ",97.0,38.8,1.0,0.6221005581637288
+7,5,2,61.2,25.0,75.0,"Given the current state of the game, my relatively high trust scores for all players suggest that co",97.0,38.8,1.0,0.5828020059506358
+7,5,3,60.2,20.0,79.0,"Given the current game state, it seems strategic to contribute moderately while also maintaining my ",97.0,38.8,1.0,0.637452390800342
+7,5,4,73.2,10.0,102.0,"Given the current game state, it seems that most players are competent but have varying levels of be",97.0,38.8,1.0,0.7914797096770587
+7,5,5,56.2,12.0,83.0,"Given the current game state, my goal is to maximize my final wealth while also considering the impa",97.0,38.8,1.0,0.6821623202497388
+7,6,1,71.0,40.0,113.0,"Given the current game state, it appears that some players are contributing more than others, with P",205.0,82.0,1.0,0.5956540925220158
+7,6,2,75.0,40.0,117.0,"Given the current state of the game, it seems that players 4 and 5 have been contributing less compa",205.0,82.0,1.0,0.5731162272016717
+7,6,3,79.0,15.0,146.0,"Given the current game state, it appears that Players 1, 2, and 5 have shown relatively high compete",205.0,82.0,1.0,0.7396234752223909
+7,6,4,102.0,50.0,134.0,"In this round, my strategy aims to encourage continued cooperation while also taking advantage of th",205.0,82.0,1.0,0.7344991296927446
+7,6,5,83.0,60.0,105.0,"Given the current game state, it seems that players 1, 2, and 3 are fairly cooperative based on thei",205.0,82.0,1.0,0.6251817402654246
+7,7,1,113.0,30.0,207.0,"Given the current game state, it appears that Players 3 and 4 are not acting benevolently as their t",310.0,124.0,1.0,0.6685466063204012
+7,7,2,117.0,60.0,181.0,"Given the current state of the game, it appears that most players are demonstrating competence but v",310.0,124.0,1.0,0.5434004323062299
+7,7,3,146.0,100.0,170.0,"Given the game state, my trust scores, and strategic considerations, I will strategically contribute",310.0,124.0,1.0,0.6629407251735266
+7,7,4,134.0,60.0,198.0,"Given the current game state, it appears that Players 2 and 5 are demonstrating high levels of both ",310.0,124.0,1.0,0.6861234614675358
+7,7,5,105.0,60.0,169.0,"Given the current game state, it appears that Players 3 and 4 are free-riders, as their low contribu",310.0,124.0,1.0,0.5803324394410971
+7,8,1,207.0,45.0,302.0,"Given the current game state, it seems that while all players are competent in their strategies, som",350.0,140.0,1.0,0.7525469443677152
+7,8,2,181.0,75.0,246.0,"Given the current state of the game, it appears that all players are competent contributors but have",350.0,140.0,1.0,0.5904829292756557
+7,8,3,170.0,80.0,230.0,"Given the current game state, it seems strategic to contribute a significant amount while also maint",350.0,140.0,1.0,0.6730877382719849
+7,8,4,198.0,50.0,288.0,"Given the current game state, I will adopt a strategic approach that balances cooperation, competiti",350.0,140.0,1.0,0.7553311759116115
+7,8,5,169.0,100.0,209.0,"Given the current game state, it seems that Players 2 and 4 have shown higher levels of benevolence ",350.0,140.0,1.0,0.5904829292756557
+7,9,1,302.0,60.0,414.0,"Given the high trust scores towards Players 1, 2, 5 and moderate scores for Players 3 and 4, it seem",430.0,172.0,1.0,0.7216605853429227
+7,9,2,246.0,90.0,328.0,"Given the current state of the game, it seems that a mix of competence and benevolence is displayed ",430.0,172.0,1.0,0.5469647608600905
+7,9,3,230.0,50.0,352.0,"Given the current game state, I will adopt a balanced strategy that combines a fair contribution to ",430.0,172.0,1.0,0.6880140684160958
+7,9,4,288.0,150.0,310.0,"Given that Player 2 is both competent and benevolent, it suggests that they are likely to consistent",430.0,172.0,1.0,0.6668130074960462
+7,9,5,209.0,80.0,301.0,"Given that Player 2 has shown perfect competence and benevolence, contributing equally to the public",430.0,172.0,1.0,0.5644066213252068
+7,10,1,414.0,200.0,526.0,"Given the high trust scores towards Players 1, 2, 5, and moderate score for Player 4, as well as the",780.0,312.0,1.0,0.6997838294319878
+7,10,2,328.0,100.0,540.0,"Given the current state of the game, it appears that Player 5 is the most benevolent among all playe",780.0,312.0,1.0,0.6598315946927454
+7,10,3,352.0,150.0,514.0,"Given that Player 2 has consistently shown both competence and benevolence throughout the game, it i",780.0,312.0,1.0,0.6960969545222376
+7,10,4,310.0,180.0,442.0,"Given the current game state, my strategy is to adopt a balanced approach that maximizes my final we",780.0,312.0,1.0,0.6449362515851115
+7,10,5,301.0,150.0,463.0,"Given the current game state, it appears that Player 2 is both competent and benevolent, while the o",780.0,312.0,1.0,0.5797033895645403
+8,1,1,20.0,8.0,26.4,Given the equal trust scores for all players and the current state of the game where no significant ,36.0,14.4,0.69,0.5325
+8,1,2,20.0,10.0,24.4,Given the equal trust scores for all players and the absence of past cooperative or free-riding beha,36.0,14.4,0.69,0.5325
+8,1,3,20.0,6.0,28.4,"Given the equal competence and benevolence trust scores for all players, this suggests that they are",36.0,14.4,0.69,0.5816666666666667
+8,1,4,20.0,7.0,27.4,Based on your trust scores indicating that all players have an average level of competence and benev,36.0,14.4,0.69,0.5615277777777777
+8,1,5,20.0,5.0,29.4,"Given the equal trust scores for all players, a fair strategy would be to contribute modestly in thi",36.0,14.4,0.69,0.6018055555555555
+8,2,1,26.399999999999995,10.0,33.599999999999994,"Given the current game state, my strategy should be to make a moderate contribution that balances co",43.0,17.2,0.8799999999999999,0.5726776485788113
+8,2,2,24.4,12.0,29.599999999999998,"Given the current state of the game, it seems that all players have been contributing fairly so far,",43.0,17.2,0.8799999999999999,0.5726776485788113
+8,2,3,28.399999999999995,10.0,35.599999999999994,Given the relatively high competence scores of all players indicating their rationality and strategi,43.0,17.2,0.8799999999999999,0.621844315245478
+8,2,4,27.399999999999995,8.0,36.599999999999994,"Given the current game state and considering the trust scores of other players, my strategy is to pr",43.0,17.2,0.8799999999999999,0.6379360465116278
+8,2,5,29.399999999999995,3.0,43.599999999999994,"Given the current game state and strategic considerations, it seems beneficial to contribute a signi",43.0,17.2,0.8799999999999999,0.7455749354005167
+8,3,1,33.599999999999994,15.0,37.39999999999999,"Given the current game state, it appears that Player 5 has a lower benevolence score compared to the",47.0,18.8,1.0,0.547589512036021
+8,3,2,29.599999999999998,6.0,42.4,"Given the current state of the game, it appears that Player 5 has shown less benevolence than the ot",47.0,18.8,1.0,0.647589512036021
+8,3,3,35.599999999999994,10.0,44.39999999999999,"Given the current game state, I should strategically consider both my trust scores in other players ",47.0,18.8,1.0,0.5940417768522452
+8,3,4,36.599999999999994,6.0,49.39999999999999,"Given the current game state, my trust scores for other players suggest that they are generally coop",47.0,18.8,1.0,0.6892438085888827
+8,3,5,43.599999999999994,10.0,52.39999999999999,"Given the current game state, strategic considerations, and my trust scores for the players, it seem",47.0,18.8,1.0,0.7118934386309141
+8,4,1,37.39999999999999,18.0,40.599999999999994,"Given the current game state, it appears that Players 3, 4, and 5 are contributing more than Player ",53.0,21.2,1.0,0.495629203665278
+8,4,2,42.39999999999999,6.0,57.599999999999994,"Given the current state of the game, it seems that there is a mix of cooperators and free-riders amo",53.0,21.2,1.0,0.6494027885709384
+8,4,3,44.39999999999999,7.0,58.599999999999994,"Given the trust scores you have assigned to each player, Player 1 seems the most cooperative and com",53.0,21.2,1.0,0.5980033408080676
+8,4,4,49.39999999999999,10.0,60.599999999999994,"Given the current game state, my trust scores, and the goal to maximize my final wealth, I will stra",53.0,21.2,1.0,0.624548351356657
+8,4,5,52.39999999999999,12.0,61.599999999999994,"Given the current game state, my trust scores for all players are relatively high, with only minor v",53.0,21.2,1.0,0.6149331302601712
+8,5,1,40.599999999999994,20.0,59.39999999999999,"Given the current game state, it seems that Players 3, 4, and 5 are demonstrating slightly higher le",97.0,38.8,1.0,0.5150317485386103
+8,5,2,57.599999999999994,20.0,76.39999999999999,"In this Public Goods Game, the goal is to maximize my final wealth while considering the current sta",97.0,38.8,1.0,0.6389025442529221
+8,5,3,58.599999999999994,15.0,82.39999999999999,"Given the current game state, it is crucial to consider both competence and benevolence of the other",97.0,38.8,1.0,0.6354241226180868
+8,5,4,60.599999999999994,30.0,69.39999999999999,"Given the current game state, my strategy is to contribute a significant amount that reflects both m",97.0,38.8,1.0,0.5989508962299893
+8,5,5,61.599999999999994,12.0,88.39999999999999,"Given the current game state, my trust scores for other players suggest that they are generally comp",97.0,38.8,1.0,0.671817682514833
+8,6,1,59.39999999999999,25.0,78.39999999999999,"Given the current game state, it seems that Player 4 has demonstrated the highest level of benevolen",110.0,44.0,1.0,0.3995132063279335
+8,6,2,76.39999999999999,10.0,110.39999999999999,"Given the game state and your trust scores, it seems that maintaining a balance between contributing",110.0,44.0,1.0,0.5830908407435298
+8,6,3,82.39999999999999,10.0,116.39999999999999,"Given the current game state, it is crucial to balance the need for cooperation with the risk of fre",110.0,44.0,1.0,0.5815097400004229
+8,6,4,69.39999999999999,15.0,98.39999999999999,"Given the current game state, my strategy is to contribute a significant amount while maintaining a ",110.0,44.0,1.0,0.5226398979356919
+8,6,5,88.39999999999999,50.0,82.39999999999999,"Given the current game state and my trust scores for the other players, it seems that most of them a",110.0,44.0,1.0,0.5112991403041561
+8,7,1,78.39999999999999,60.0,108.39999999999999,"Given the current game state, it appears that Players 4 and 5 are demonstrating higher levels of ben",225.0,90.0,1.0,0.4175346444698463
+8,7,2,110.39999999999998,5.0,195.39999999999998,"Given the current state of the game, it appears that Players 3, 4, and 5 have been contributing more",225.0,90.0,1.0,0.6579321594049125
+8,7,3,116.39999999999998,60.0,146.39999999999998,"Given the current game state, it is crucial to consider both competence and benevolence of each play",225.0,90.0,1.0,0.5545311781423357
+8,7,4,98.39999999999999,65.0,123.39999999999999,"Given the current game state, my trust scores, and strategic considerations, it seems appropriate to",225.0,90.0,1.0,0.49566133607760465
+8,7,5,82.39999999999998,35.0,137.39999999999998,"Given the game dynamics and my trust scores, I will make a strategic contribution that aims to maxim",225.0,90.0,1.0,0.5444792597846861
+8,8,1,108.39999999999998,70.0,198.39999999999998,"Given the current game state, it appears that Player 4 has shown the highest level of benevolence to",400.0,160.0,1.0,0.5651340232036128
+8,8,2,195.39999999999998,60.0,295.4,"Given my trust scores for other players (especially Player 3 with low benevolence), I should conside",400.0,160.0,1.0,0.7616821594049126
+8,8,3,146.39999999999998,90.0,216.39999999999998,"Given my trust scores for all players, I perceive Player 4 as being more benevolent than the others ",400.0,160.0,1.0,0.6258805568761021
+8,8,4,123.39999999999998,90.0,193.39999999999998,"Given the current game state and my trust scores, it seems that most players are somewhat competitiv",400.0,160.0,1.0,0.5670107148113712
+8,8,5,137.39999999999998,90.0,207.39999999999998,"Given the current game dynamics, my goal is to maximize my final wealth while considering the trust ",400.0,160.0,1.0,0.6158286385184526
+8,9,1,198.39999999999998,180.0,262.4,"Given the current game state, my strategy is to contribute a significant amount while also taking in",610.0,244.0,1.0,0.579358180540486
+8,9,2,295.4,100.0,439.4,"Given the current game state, my strategy is to make a moderate contribution that encourages coopera",610.0,244.0,1.0,0.794766488902207
+8,9,3,216.39999999999998,130.0,330.4,"Given the current game state and my trust scores, it is crucial to contribute substantially to the p",610.0,244.0,1.0,0.6328938990787722
+8,9,4,193.39999999999998,100.0,337.4,"Given the current game state, my strategy is to make a moderate contribution that balances self-inte",610.0,244.0,1.0,0.6351997310386487
+8,9,5,207.39999999999998,100.0,351.4,"Given the current game state, it seems that some players are more focused on free-riding (Player 2),",610.0,244.0,1.0,0.6752144226018302
+8,10,1,262.4,120.0,358.4,"Given the high competence scores of all players, it suggests that they are strategic and capable in ",540.0,216.0,1.0,0.6395606628440262
+8,10,2,439.4,120.0,535.4,"Given the current game state and my trust scores, it seems prudent to make a strategic contribution ",540.0,216.0,1.0,0.8099689712057472
+8,10,3,330.4,100.0,446.4,"Given the current game state with only one round remaining, it is crucial to optimize contributions ",540.0,216.0,1.0,0.6891307726016986
+8,10,4,337.4,100.0,453.4,"Given the current game state, my strategy is to make a moderate contribution that balances encouragi",540.0,216.0,1.0,0.6912658021941769
+8,10,5,351.4,100.0,467.4,"Given the current game state, it seems that some players are acting as free-riders while others are ",540.0,216.0,1.0,0.728316442530456
+9,1,1,20.0,10.0,30.0,"Given the equal competence and benevolence ratings for all players, it suggests that they are neutra",50.0,20.0,0.69,0.58
+9,1,2,20.0,10.0,30.0,"In this public goods game, the goal is to maximize my final wealth while considering the actions of ",50.0,20.0,0.69,0.58
+9,1,3,20.0,10.0,30.0,Given the current state of the game with equal wealth among all players and a lack of history for st,50.0,20.0,0.69,0.58
+9,1,4,20.0,10.0,30.0,"Based on the current game state, trust scores, and the rules of the public goods game, it seems prud",50.0,20.0,0.69,0.58
+9,1,5,20.0,10.0,30.0,"Given the equal trust scores for all players, suggesting an even level of competence and benevolence",50.0,20.0,0.69,0.58
+9,2,1,29.999999999999996,15.0,43.8,"Given the similar competence and benevolence ratings for all players, indicating moderate trustworth",72.0,28.8,0.8799999999999999,0.6242547956988683
+9,2,2,29.999999999999996,7.0,51.8,"Based on the current game state, your trust scores for all players are relatively high, suggesting t",72.0,28.8,0.8799999999999999,0.7210696935483025
+9,2,3,29.999999999999996,20.0,38.8,"Given the current state of the game, where all players are contributing equally, it seems rational t",72.0,28.8,0.8799999999999999,0.6112780268816358
+9,2,4,29.999999999999996,15.0,43.8,"In this round, I will consider contributing a substantial yet strategic amount to maximize my final ",72.0,28.8,0.8799999999999999,0.6242547956988683
+9,2,5,29.999999999999996,15.0,43.8,"Given the equal trust scores for all players, suggesting that they are moderately competent and bene",72.0,28.8,0.8799999999999999,0.6242547956988683
+9,3,1,43.8,12.0,59.8,"Given the current game state, my trust scores, and the strategic considerations, it seems prudent to",70.0,28.0,1.0,0.7394928381951629
+9,3,2,51.8,10.0,69.8,"Given the current game state, my trust scores suggest that all players exhibit relatively high compe",70.0,28.0,1.0,0.8367925125422968
+9,3,3,38.8,18.0,48.8,"Given my trust scores for all players being relatively high, especially for Player 1 and Player 4, I",70.0,28.0,1.0,0.6733698934946779
+9,3,4,43.8,15.0,56.8,"Given the current game state, trust scores, and strategic considerations, it appears that all player",70.0,28.0,1.0,0.6919121648732869
+9,3,5,43.8,15.0,56.8,"Given the current game state, my strategic decision is to make a moderate contribution that reflects",70.0,28.0,1.0,0.6919121648732869
+9,4,1,59.8,15.0,80.8,"Given the current game state, my trust scores, and the strategic considerations, it seems prudent to",90.0,36.0,1.0,0.7204106984959691
+9,4,2,69.8,15.0,90.8,"Given the current game state and my trust scores for each player, it seems that Players 3, 4, and 5 ",90.0,36.0,1.0,0.8014937604519141
+9,4,3,48.8,30.0,54.8,"Given the current state of the game, it appears that Players 1, 4, and 5 are relatively benevolent w",90.0,36.0,1.0,0.6278082445788982
+9,4,4,56.8,12.0,80.8,"Given the current game state and trust scores, it seems that Player 3 shows the highest benevolence ",90.0,36.0,1.0,0.7201697588313042
+9,4,5,56.8,18.0,74.8,"Given the current game state, my strategic decision is to maintain a moderate contribution level whi",90.0,36.0,1.0,0.6413505159575073
+9,5,1,80.8,10.0,104.0,"Given the current game state, my trust scores for players 3 and 5 are relatively high, signifying th",83.0,33.2,1.0,0.7233147342329446
+9,5,2,90.8,25.0,99.0,"Given the current game state and my trust scores, I will aim to increase cooperation by contributing",83.0,33.2,1.0,0.7088662417221828
+9,5,3,54.8,20.0,68.0,"In this round, my goal is to maximize my final wealth while also considering the trust scores of oth",83.0,33.2,1.0,0.5801807258491669
+9,5,4,80.8,18.0,96.0,"Given the current game state, my trust scores, and the goal to maximize final wealth, I will make a ",83.0,33.2,1.0,0.6287828853817607
+9,5,5,74.8,10.0,98.0,"Given the game dynamics and my current trust scores, I will make a strategic contribution that balan",83.0,33.2,1.0,0.6795783162106128
+9,6,1,104.0,70.0,104.8,"Given the current game state and strategic considerations, I will adjust my contribution strategy ba",177.0,70.8,1.0,0.6123897924715922
+9,6,2,99.00000000000001,30.0,139.8,"Given the current game state, it appears that Players 3 and 4 are acting fairly cooperatively, while",177.0,70.8,1.0,0.6444977466920653
+9,6,3,68.0,35.0,103.8,"Given the current state of the game, it appears that all players are competent but have varying degr",177.0,70.8,1.0,0.5170806428448766
+9,6,4,96.00000000000001,30.0,136.8,"Given the current game state, my trust scores, and strategic considerations, I will choose to contri",177.0,70.8,1.0,0.5766304955561142
+9,6,5,98.00000000000001,12.0,156.8,"Given the game dynamics and my trust scores, I will make a moderate contribution to maintain coopera",177.0,70.8,1.0,0.7064244587866096
+9,7,1,104.80000000000001,70.0,154.8,"Given the game state, my trust scores for other players, and the strategic considerations, here's my",300.0,120.0,1.0,0.5395389816711109
+9,7,2,139.8,80.0,179.8,"Given the current game state, it seems that Players 3 and 4 have been consistently contributing fair",300.0,120.0,1.0,0.5716469358915841
+9,7,3,103.80000000000001,25.0,198.8,"Given the current state of the game, it seems that Players 4 and 5 have been contributing more consi",300.0,120.0,1.0,0.6374764280895933
+9,7,4,136.8,50.0,206.8,"Given the current game state, my trust scores suggest that Players 1, 3, and 5 are somewhat cooperat",300.0,120.0,1.0,0.5633838995109164
+9,7,5,156.8,75.0,201.8,"Given the current game state and my trust scores, I will make a strategic decision that balances bet",300.0,120.0,1.0,0.6335736479861285
+9,8,1,154.8,50.0,224.8,"Given the current game state, my strategy is to maintain a balanced approach between contributing fa",300.0,120.0,1.0,0.6240670941209102
+9,8,2,179.8,60.0,239.8,"Given the game state, my trust scores, and the strategic considerations, I will adopt a balanced str",300.0,120.0,1.0,0.6200307164053462
+9,8,3,198.8,60.0,258.8,"Given the current game state and strategic considerations, it seems prudent to make a contribution t",300.0,120.0,1.0,0.6858602086033554
+9,8,4,206.8,80.0,246.8,"Given the current game state, my trust scores, and the strategic considerations, it seems that Playe",300.0,120.0,1.0,0.5867676800246786
+9,8,5,201.8,50.0,271.8,"Given the current game state and my trust scores, I choose to contribute a moderate amount to mainta",300.0,120.0,1.0,0.7024293160500915
+9,9,1,224.8,150.0,270.8,"Given the current game state, I will strategically contribute a significant amount to maximize my ch",490.0,196.0,1.0,0.6107903482087349
+9,9,2,239.8,60.0,375.8,"Given the current game state, it seems that Player 4 has shown a higher level of benevolence compare",490.0,196.0,1.0,0.711149944177237
+9,9,3,258.8,80.0,374.8,"Given the current game state, it seems prudent to continue contributing with a focus on maximizing m",490.0,196.0,1.0,0.7231009505846425
+9,9,4,246.8,100.0,342.8,"Given the current game state, my strategy is to prioritize both competence and benevolence of other ",490.0,196.0,1.0,0.5932965135810426
+9,9,5,271.8,100.0,367.8,"Given the current game state, my trust scores, and the strategic considerations, it seems appropriat",490.0,196.0,1.0,0.7077102750040235
+9,10,1,270.79999999999995,180.0,530.8,"Given the current game state, my strategy is to contribute a significant amount while also taking in",1100.0,440.0,1.0,0.6007237571997952
+9,10,2,375.79999999999995,200.0,615.8,"Given the current game state, it appears that Player 4 has consistently demonstrated both competence",1100.0,440.0,1.0,0.6696214208365985
+9,10,3,374.79999999999995,300.0,514.8,"Given the game state and strategic considerations, it appears that players P1, P4, and P5 have demon",1100.0,440.0,1.0,0.6433576941793056
+9,10,4,342.79999999999995,120.0,662.8,"Given the current game state, my strategy is to slightly reduce my contribution compared to the last",1100.0,440.0,1.0,0.6654051151199469
+9,10,5,367.8,300.0,507.8,"Given the game's structure, it's clear that contributing more can lead to greater benefits for all p",1100.0,440.0,1.0,0.6279670185986866
+10,1,1,20.0,5.0,30.6,"In this public goods game, my strategy should be based on encouraging cooperation while also conside",39.0,15.6,0.69,0.5843589743589743
+10,1,2,20.0,10.0,25.6,"Given that all players have similar wealth and trust scores suggest moderately cooperative behavior,",39.0,15.6,0.69,0.5073076923076922
+10,1,3,20.0,10.0,25.6,Given the current situation with no previous rounds of gameplay and equal trust scores for all playe,39.0,15.6,0.69,0.5073076923076922
+10,1,4,20.0,10.0,25.6,"Given the equal trust scores for all players, the lack of precedent for strategic contributions, and",39.0,15.6,0.69,0.5073076923076922
+10,1,5,20.0,4.0,31.6,"Given the initial equal trust scores for all players, it suggests that they are considered neutral o",39.0,15.6,0.69,0.6029487179487178
+10,2,1,30.6,10.0,37.0,"Given the current game state, my trust scores for all players are moderately high for competence but",41.0,16.4,0.8799999999999999,0.5455409631019387
+10,2,2,25.6,3.0,39.0,"Given the current game state, my trust scores, and the goal to maximize my final wealth, I will adop",41.0,16.4,0.8799999999999999,0.6139774859287054
+10,2,3,25.6,12.0,30.0,"Given the current game state, it seems that Players 2, 4, and possibly Player 5 have demonstrated a ",41.0,16.4,0.8799999999999999,0.4684896810506566
+10,2,4,25.6,12.0,30.0,"Given the current game state, it seems that some players are more benevolent than others based on th",41.0,16.4,0.8799999999999999,0.4684896810506566
+10,2,5,31.6,4.0,44.0,"Given the current game state, it appears that Players 1-4 have been fairly even in their contributio",41.0,16.4,0.8799999999999999,0.6374609130706691
+10,3,1,37.0,15.0,54.0,"Given the current game state, my trust scores for other players indicate that Players 3, 4, and poss",80.0,32.0,1.0,0.6172863899312069
+10,3,2,39.0,10.0,61.0,"Given the current game state, my trust scores, and the strategic considerations, I choose to contrib",80.0,32.0,1.0,0.7094181910569105
+10,3,3,30.0,20.0,42.0,"Given the current game state, it appears that some players are more likely to act as free-riders bas",80.0,32.0,1.0,0.51536331300813
+10,3,4,30.0,15.0,47.0,"Given the current game state, it appears that Player 3 and Player 5 are less cooperative compared to",80.0,32.0,1.0,0.5450508130081301
+10,3,5,44.0,20.0,56.0,"Given the current game state, it appears that Player 3 and Players 4 have shown more benevolence tow",80.0,32.0,1.0,0.6743345450281426
+10,4,1,54.0,35.0,57.4,"Given the current game state, my trust scores indicate that Players 3 and 4 are highly competent and",96.0,38.4,1.0,0.5846293093339587
+10,4,2,61.00000000000001,10.0,89.4,"Given the current game state, my trust scores indicate varying levels of benevolence among the playe",96.0,38.4,1.0,0.7381514813946216
+10,4,3,42.00000000000001,16.0,64.4,"Given the current game state, it seems that some players have been more cooperative than others base",96.0,38.4,1.0,0.5693728990775484
+10,4,4,47.00000000000001,20.0,65.4,"Given the current game state, it seems that Player 3 exhibits both competence and benevolence, while",96.0,38.4,1.0,0.5277062324108818
+10,4,5,56.00000000000001,15.0,79.4,"Given the current game state, it appears that Player 3 has shown consistent competence and benevolen",96.0,38.4,1.0,0.6909650074265166
+10,5,1,57.39999999999999,20.0,99.16,"Given the current game state, my strategy is to contribute moderately with an aim to balance coopera",154.4,61.760000000000005,1.0,0.5807784857515991
+10,5,2,89.40000000000002,15.0,136.16000000000003,"Given the current game state, my strategy involves a mix of cooperation and self-interest. Although ",154.4,61.760000000000005,1.0,0.6898528768233141
+10,5,3,64.4,64.4,61.760000000000005,"Given the current game state, my strategy is to prioritize building trust while not being too genero",154.4,61.760000000000005,1.0,0.46878167427292233
+10,5,4,65.4,40.0,87.16000000000001,"Given the current game state, it's crucial to maintain a balance between contributing enough for the",154.4,61.760000000000005,1.0,0.46878167427292233
+10,5,5,79.4,15.0,126.16000000000001,"Given the current game state, it appears that Player 4 exhibits high competence and benevolence, mak",154.4,61.760000000000005,1.0,0.6669319859709315
+10,6,1,99.16,50.0,163.16,"Given the current game state, my strategy is to contribute a significant but not excessive amount to",285.0,114.0,1.0,0.5655153278568623
+10,6,2,136.16000000000003,70.0,180.16000000000003,"Given the current game state, my strategy is to maintain a high level of contribution while keeping ",285.0,114.0,1.0,0.6301858185838534
+10,6,3,61.75999999999999,45.0,130.76,"Given the current game state, it appears that Player 4 has shown consistent benevolence and competen",285.0,114.0,1.0,0.5067461949808301
+10,6,4,87.16000000000003,45.0,156.16000000000003,"Given the current game state, it's important to consider both competition and cooperation for maximi",285.0,114.0,1.0,0.5067461949808301
+10,6,5,126.16000000000003,75.0,165.16000000000003,"Given the current game state, it seems that Players 3 and 4 are acting cooperatively by consistently",285.0,114.0,1.0,0.6072649277314708
+10,7,1,163.16,30.0,251.16,"In this game, the goal is to maximize my final wealth by balancing the need for cooperation, trust, ",295.0,118.0,1.0,0.5659583809907759
+10,7,2,180.16000000000003,130.0,168.16000000000003,"Given the current game state, it appears that Players 4 and 4-5 have been contributing more consiste",295.0,118.0,1.0,0.5276732893936757
+10,7,3,130.76,60.0,188.76,"Given the current game state, it seems prudent to balance cooperation with self-interest. The multip",295.0,118.0,1.0,0.4247770727331019
+10,7,4,156.16000000000003,45.0,229.16000000000003,"Given the game dynamics, it's essential to consider both competence and benevolence scores of other ",295.0,118.0,1.0,0.4808126131590734
+10,7,5,165.16000000000003,30.0,253.16000000000003,"Given the current game state, it is crucial to maintain cooperation while also capitalizing on the m",295.0,118.0,1.0,0.587186991096509
+10,8,1,251.15999999999997,70.0,365.15999999999997,"Given the current game state, it seems that Players 3, 4, and myself are consistently contributing m",460.0,184.0,1.0,0.667878649257066
+10,8,2,168.16000000000003,100.0,252.16000000000003,"Given the current game state, my strategy is to maintain a mix of self-interest and cooperation whil",460.0,184.0,1.0,0.5805265845213227
+10,8,3,188.76,100.0,272.76,"Given the current game state, it seems that Players 4 and 5 are demonstrating higher benevolence sco",460.0,184.0,1.0,0.4944553819709309
+10,8,4,229.16000000000003,140.0,273.16,"Given the current game state, it appears that Players 1, 3, and 5 are consistently contributing whil",460.0,184.0,1.0,0.5336659082867203
+10,8,5,253.16000000000003,50.0,387.16,"Given the current game state, it is evident that Players 1, 2, and 4 have shown less benevolence com",460.0,184.0,1.0,0.7012950038476836
+10,9,1,365.15999999999997,200.0,403.15999999999997,"Given the current game state, it appears that Player 3 and Player 4 are consistently contributing th",595.0,238.0,1.0,0.6301007266605674
+10,9,2,252.16000000000003,120.0,370.16,"Given the game state, it seems that Player 3 and Player 4 are consistently contributing more than ot",595.0,238.0,1.0,0.565408461517769
+10,9,3,272.76,100.0,410.76,"Given the current game state, it seems that Player 4 and Player 5 have shown a higher level of benev",595.0,238.0,1.0,0.5415934257609869
+10,9,4,273.16,100.0,411.16,"Given the current game state, it seems that Player 3 has been consistently contributing more than th",595.0,238.0,1.0,0.5577367251860201
+10,9,5,387.1600000000001,75.0,550.1600000000001,"Given the strategic considerations and your trust scores, it appears that Player 3 is the most relia",595.0,238.0,1.0,0.7118704983723857
+10,10,1,403.15999999999997,300.0,473.15999999999997,"Based on the game state, your trust scores, and the goal to maximize your final wealth, it seems str",925.0,370.0,1.0,0.5271784368342528
+10,10,2,370.16,250.0,490.16,"Given the game state, my strategy is to make a significant contribution that leverages the trust I h",925.0,370.0,1.0,0.46248617169145445
+10,10,3,410.76,100.0,680.76,"Given the current game state, it seems prudent to maintain a moderate contribution level while also ",925.0,370.0,1.0,0.569385421648958
+10,10,4,411.1600000000001,75.0,706.1600000000001,"Given the current game state and my trust scores, I will make a strategic contribution that aims to ",925.0,370.0,1.0,0.6070224394717344
+10,10,5,550.1600000000001,200.0,720.1600000000001,"Given the current game state and strategic considerations, it appears that all players are competent",925.0,370.0,1.0,0.608948208546071
