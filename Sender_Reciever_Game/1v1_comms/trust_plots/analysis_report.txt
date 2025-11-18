@@ -1,0 +1,43 @@
+======================================================================
+TRUST GAME ANALYSIS REPORT
+======================================================================
+
+1. BASIC STATISTICS
+   - Total Games: 10
+   - Total Rounds: 100
+   - Average Game Length: 10.00 rounds
+
+2. TRUST EVOLUTION
+   Initial Trust (avg):
+     - Sender Competence Trust: 0.500
+     - Sender Benevolence Trust: 0.500
+     - Receiver Competence Trust: 0.500
+     - Receiver Benevolence Trust: 0.500
+   Final Trust (avg):
+     - Sender Competence Trust: 1.000
+     - Sender Benevolence Trust: 0.859
+     - Receiver Competence Trust: 1.000
+     - Receiver Benevolence Trust: 0.847
+
+3. MONETARY BEHAVIOR
+   - Average amount sent by sender: $12.35
+   - Average amount returned by receiver: $14.43
+   - Average return ratio: 0.584 (0.5 = fair split)
+
+4. TRUST-ACTION RELATIONSHIPS
+   - Sender trust vs amount sent correlation: 0.535
+   - Receiver trust vs amount returned correlation: 0.231
+
+5. GAME OUTCOMES
+   - Sender Wins: 1 (10.0%)
+   - Receiver Wins: 9 (90.0%)
+   - Ties: 0 (0.0%)
+   - Average Sender Final Amount: $35.80
+   - Average Receiver Final Amount: $102.70
+
+6. KEY INSIGHTS
+   → MODERATE reciprocity (0.58) indicates cautious cooperation
+   ✓ Trust INCREASED by 85.3% over games
+   ✓ Strong trust-action correlation (0.53) shows rational behavior
+
+======================================================================
