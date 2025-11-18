@@ -5,8 +5,9 @@ from langchain_ollama import OllamaLLM
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 import pandas as pd
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer  # <-- VADER IMPORT
 
-# --- 1. TRUST TRACKER CLASS (FINALIZED) ---
+# --- 1. TRUST TRACKER CLASS (FINALIZED WITH VADER) ---
 
 class TrustTracker:
     """
@@ -22,6 +23,8 @@ class TrustTracker:
         self.D = D
         self.k_c = k_c
         self.k_b = k_b
+        # Initialize VADER once for the class
+        self.vader_analyzer = SentimentIntensityAnalyzer()
 
     def _get_f(self, message):
         """Calculates Effort (f) as a deterministic proxy (word count)."""
@@ -34,23 +37,24 @@ class TrustTracker:
         self.BTrust = max(0.01, self.BTrust - self.k_b)
 
     def _get_promise_scores(self, analyzer_agent, promise):
-        """Gets Q (Quality) and E (Emotion) scores for a *promise* (text)."""
+        """
+        Gets Q (Quality) using the LLM Analyzer.
+        Gets E (Emotion) using the deterministic VADER tool.
+        """
+        # --- 1. Get Quality (Q) from LLM Analyzer ---
         q_chain = ChatPromptTemplate.from_template(Q_PROMISE_TEMPLATE) | analyzer_agent | StrOutputParser()
-        e_chain = ChatPromptTemplate.from_template(E_PROMISE_TEMPLATE) | analyzer_agent | StrOutputParser()
-        
         q_response = q_chain.invoke({"message": promise})
         try:
             Q = max(0.0, min(1.0, float(q_response.strip())))
         except ValueError:
             Q = 0.0 
 
-        e_response = e_chain.invoke({"message": promise})
-        try:
-            score = float(e_response.strip())
-            E_pos = max(0, score)
-            E_neg = abs(min(0, score))
-        except ValueError:
-            E_pos, E_neg = 0.0, 0.0
+        # --- 2. Get Emotion (E_pos, E_neg) from VADER ---
+        vader_scores = self.vader_analyzer.polarity_scores(promise)
+        compound_score = vader_scores['compound'] # This is the -1.0 to +1.0 score
+        
+        E_pos = max(0, compound_score)
+        E_neg = abs(min(0, compound_score))
             
         return Q, E_pos, E_neg
 
@@ -63,10 +67,8 @@ class TrustTracker:
             return 0.0, 0.0, 0.0 # No action to score
 
         # --- Calculate Benevolence (Fairness) ---
-        # A 50/50 split of the *pot* is the baseline for "fairness".
         fair_return = pot_size / 2.0
         
-        # This formula maps the action to a -1.0 to +1.0 benevolence score.
         if fair_return == 0:
             benevolence_score = 0.0 if amount_returned == 0 else 1.0
         else:
@@ -80,8 +82,6 @@ class TrustTracker:
 
         # --- Calculate Competence (Rationality) ---
         # A rational move (Q=1.0) is any move that is not highly selfish
-        # (which would kill future cooperation).
-        # We define "rationality" as not being 100% selfish.
         Q_action = 1.0 - E_neg_action 
         
         return Q_action, E_pos_action, E_neg_action
@@ -90,7 +90,6 @@ class TrustTracker:
         """Updates trust based *only* on the agent's promise (their text)."""
         self._apply_decay()
         
-        # Handle empty promises
         if not promise.strip():
             self.CTrust = self.CTrust - 0.1 # Penalize competence
             self.BTrust = self.BTrust - 0.1 # Penalize benevolence
@@ -98,7 +97,8 @@ class TrustTracker:
             return
 
         f = self._get_f(promise)
-        Q, E_pos, E_neg = self._get_promise_scores(analyzer_agent, promise)
+        # Get Q from LLM, but E_pos/E_neg from VADER
+        Q, E_pos, E_neg = self._get_promise_scores(analyzer_agent, promise) 
         
         # Promise Quality updates Competence Trust
         ct_bonus = (Q * (f + self.D)) / math.log(self.CTrust + self.e - 1)
@@ -121,7 +121,6 @@ class TrustTracker:
         if sender_money <= 0:
             return # Avoid division by zero
             
-        # Benevolence: Sending 0 is -1.0. Sending 50% is 0.0. Sending 100% is 1.0.
         fair_send = sender_money / 2.0
         
         if fair_send == 0:
@@ -132,7 +131,6 @@ class TrustTracker:
         E_pos_action = max(0, benevolence_score)
         E_neg_action = abs(min(0, benevolence_score))
 
-        # Competence: A rational move is not 100% selfish.
         Q_action = 1.0 - E_neg_action
         
         # Update CTrust
@@ -185,8 +183,6 @@ class TrustTracker:
 
 mistral = OllamaLLM(model="mistral")
 
-# *** Prompts are now "Trust-Aware" ***
-
 SENDER_TEMPLATE = """You are {role}. You are given {money} dollars. You can send any amount (0 to {money}) to a Receiver.
 The amount you send will be doubled. The Receiver will then decide how much to send back.
 At the end of the game, the person with the most money wins.
@@ -223,7 +219,7 @@ Thank you for trusting me. I will send a fair portion back.
 Amount: 8
 """
 
-# --- Analyzer Prompts (ONLY FOR TEXT) ---
+# --- Analyzer Prompts (ONLY FOR TEXT QUALITY) ---
 
 Q_PROMISE_TEMPLATE = """
 You are an objective AI evaluator. Score the *quality* of this promise in an investment game.
@@ -233,12 +229,7 @@ The PROMISE is: '{message}'.
 Respond with only a single floating-point number from 0.0 to 1.0.
 """
 
-E_PROMISE_TEMPLATE = """
-You are an objective AI sentiment analyzer. Score the *emotional valence* of this message.
-Respond with only a single floating-point number from -1.0 (very negative) to 1.0 (very positive).
-The MESSAGE is: '{message}'.
-"""
-# Note: The Q_ACTION and E_ACTION prompts are now gone, as they are replaced by pure math.
+# Note: E_PROMISE_TEMPLATE is no longer needed, VADER replaces it.
 
 # --- 3. GAME LOGIC ---
 
@@ -262,13 +253,12 @@ def run_round(sender_money, rounds_left, sender_acc, receiver_acc, s_memory, r_m
     sender_chain = ChatPromptTemplate.from_template(SENDER_TEMPLATE) | mistral | StrOutputParser()
     receiver_chain = ChatPromptTemplate.from_template(RECEIVER_TEMPLATE) | mistral | StrOutputParser()
     
-    # Pass trust scores into the agent's prompt
     s_output = sender_chain.invoke({
         "money": sender_money, "role": "Sender", "rounds": rounds_left,
         "sender_acc": sender_acc, "receiver_acc": receiver_acc,
         "memory": "\n".join(s_memory[-2:]),
-        "s_ctrust": s_trust_scores[0], # Sender's CTrust in Receiver
-        "s_btrust": s_trust_scores[1]  # Sender's BTrust in Receiver
+        "s_ctrust": s_trust_scores[0],
+        "s_btrust": s_trust_scores[1]
     })
     s_promise, amount_sent = parse_output(s_output)
     amount_sent = max(0, min(sender_money, amount_sent))
@@ -276,14 +266,13 @@ def run_round(sender_money, rounds_left, sender_acc, receiver_acc, s_memory, r_m
     
     received_doubled = amount_sent * 2
     
-    # Pass trust scores into the agent's prompt
     r_output = receiver_chain.invoke({
         "money": amount_sent, "money2": received_doubled, "role": "Receiver",
         "rounds": rounds_left, "sender_acc": sender_acc - amount_sent,
         "receiver_acc": receiver_acc + received_doubled,
         "memory": "\n".join(r_memory[-2:]),
-        "r_ctrust": r_trust_scores[0], # Receiver's CTrust in Sender
-        "r_btrust": r_trust_scores[1]  # Receiver's BTrust in Sender
+        "r_ctrust": r_trust_scores[0],
+        "r_btrust": r_trust_scores[1]
     })
     r_promise, amount_sent_back = parse_output(r_output)
     amount_sent_back = max(0, min(received_doubled, amount_sent_back))
@@ -297,7 +286,7 @@ def run_game(start_money, game_number, df, rounds, env_params):
     s_memory = []
     r_memory = []
     
-    # We still need the analyzer for promises
+    # We still need the analyzer for *Promise Quality (Q)*
     analyzer_agent = OllamaLLM(model="llama3.2", temperature=0.0)
 
     S_trust_in_R = TrustTracker("S_trust_in_R", **env_params)
@@ -308,21 +297,17 @@ def run_game(start_money, game_number, df, rounds, env_params):
         print(f"Round {round_num + 1}:")
         print(f"Sender: ${sender_acc}, Receiver: ${receiver_acc}")
         
-        # Get trust scores *before* the round to log them
         s_ct_pre, s_bt_pre = S_trust_in_R.get_scores()
         r_ct_pre, r_bt_pre = R_trust_in_S.get_scores()
         
-        # Print the pre-round trust scores that the agents will use
         print(f"  [S_trust_in_R (PRE): (CT: {s_ct_pre:.2f}, BT: {s_bt_pre:.2f})]")
         print(f"  [R_trust_in_S (PRE): (CT: {r_ct_pre:.2f}, BT: {r_bt_pre:.2f})]")
 
-        # Handle case where Sender has no money
         if sender_acc <= 0:
             print("Sender has no money to send. Skipping round.")
             amount_sent, amount_sent_back, s_promise, r_promise = 0, 0, "[SKIPPED]", "[SKIPPED]"
             pot_size = 0
         else:
-            # Pass current trust scores to run_round
             amount_sent, amount_sent_back, s_promise, r_promise, s_memory, r_memory = run_round(
                 sender_acc, rounds - (round_num + 1), sender_acc, receiver_acc, s_memory, r_memory,
                 s_trust_scores=(s_ct_pre, s_bt_pre),
@@ -339,17 +324,12 @@ def run_game(start_money, game_number, df, rounds, env_params):
         
         # 2. Agents update trust based on *actions* (now deterministic)
         print(f"  Analyzing actions...")
-        
-        # Receiver observes Sender's action
         R_trust_in_S.update_trust_from_action_sender(amount_sent, sender_acc)
-        
-        # Sender observes Receiver's action
         S_trust_in_R.update_trust_from_action_receiver(pot_size, amount_sent_back)
         
         print(f"Sender: {s_promise} (Sent: {amount_sent})")
         print(f"Receiver: {r_promise} (Sent back: {amount_sent_back})")
         
-        # Print the *new* trust scores after the update
         s_ct_post, s_bt_post = S_trust_in_R.get_scores()
         r_ct_post, r_bt_post = R_trust_in_S.get_scores()
         print(f"  [S_trust_in_R (POST): (CT: {s_ct_post:.2f}, BT: {s_bt_post:.2f})]")

@@ -5,14 +5,19 @@ from langchain_ollama import OllamaLLM
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 import pandas as pd
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer  
 
-# --- 1. TRUST TRACKER CLASS (FINALIZED) ---
+# --- 1. TRUST TRACKER CLASS ---
 
 class TrustTracker:
     """
     Implements your dual-component trust formula.
     - CTrust (Competence) is updated by promise quality & action rationality.
     - BTrust (Benevolence) is updated by promise emotion & action fairness.
+    Trust formula: Tnew = Told + psi/ln(Told + e - 1)
+    Where psi can be:
+    - Collaborative: psi = Q*(f+D)
+    - Information gain: psi = I*R*E
     """
     def __init__(self, agent_name, D=0.5, k_c=0.01, k_b=0.01):
         self.agent_name = agent_name
@@ -22,11 +27,117 @@ class TrustTracker:
         self.D = D
         self.k_c = k_c
         self.k_b = k_b
+        # Initialize VADER once for the class
+        self.vader_analyzer = SentimentIntensityAnalyzer()
+        # Track previous messages for novelty calculation
+        self.previous_messages = []
+        self.max_message_history = 10
 
-    def _get_f(self, message):
-        """Calculates Effort (f) as a deterministic proxy (word count)."""
-        word_count = len(message.split())
-        return min(1.0, word_count / 50.0) # Normalize, 1.0 = 50 words
+    def _get_promise_effort(self, analyzer_agent, message):
+        """
+        Calculates Effort (f) based on the level of commitment expressed in the promise.
+        Uses LLM to assess the strength of commitment/effort promised.
+        Returns a value between 0.0 (no commitment) and 1.0 (strong commitment).
+        """
+        effort_template = """
+You are evaluating the level of commitment/effort expressed in this promise from a trust game.
+
+Message: '{message}'
+
+Rate the level of commitment and effort implied by this promise on a scale of 0.0 to 1.0:
+- 1.0 = Strong commitment (specific promises, concrete actions, high investment indicated)
+- 0.5 = Moderate commitment (vague promises, some effort indicated)
+- 0.0 = No commitment (empty words, no effort, just talk)
+
+Focus on what they're promising to DO, not how many words they use.
+
+Examples:
+- "I will send you 10 dollars" = high effort (0.8-1.0)
+- "I trust you and will be fair" = moderate effort (0.4-0.6)
+- "Let's see what happens" = low effort (0.1-0.3)
+- Long rambling with no concrete promise = low effort (0.0-0.2)
+
+Respond with only a single floating-point number from 0.0 to 1.0.
+"""
+        
+        f_chain = ChatPromptTemplate.from_template(effort_template) | analyzer_agent | StrOutputParser()
+        f_response = f_chain.invoke({"message": message})
+        
+        try:
+            f = max(0.0, min(1.0, float(f_response.strip())))
+        except ValueError:
+            f = 0.5  # Default to moderate effort if parsing fails
+        
+        return f
+
+    def _calculate_information_novelty(self, message):
+        """
+        Calculates Information Novelty (I) based on how different the message is
+        from previous messages.
+        Returns a value between 0.0 (completely repetitive) and 1.0 (completely novel).
+        """
+        if not self.previous_messages:
+            return 1.0  # First message is completely novel
+        
+        # Convert message to set of words (simple bag-of-words approach)
+        current_words = set(message.lower().split())
+        
+        if not current_words:
+            return 0.0
+        
+        # Calculate maximum similarity with any previous message
+        max_similarity = 0.0
+        for prev_msg in self.previous_messages:
+            prev_words = set(prev_msg.lower().split())
+            if not prev_words:
+                continue
+            
+            # Jaccard similarity
+            intersection = len(current_words & prev_words)
+            union = len(current_words | prev_words)
+            similarity = intersection / union if union > 0 else 0.0
+            max_similarity = max(max_similarity, similarity)
+        
+        # Novelty is inverse of similarity
+        novelty = 1.0 - max_similarity
+        
+        # Update message history
+        self.previous_messages.append(message)
+        if len(self.previous_messages) > self.max_message_history:
+            self.previous_messages.pop(0)
+        
+        return novelty
+    
+    def _calculate_goal_relevance(self, analyzer_agent, message, context_type="promise"):
+        """
+        Calculates Goal Relevance (R) - how much the message affects the target's goals.
+        Uses LLM to assess relevance to game goals (cooperation, winning, trust-building).
+        Returns a value between 0.0 (irrelevant) and 1.0 (highly relevant).
+        """
+        relevance_template = """
+You are evaluating how relevant this message is to the goals in a trust game.
+The main goals are: maximizing money, building cooperation, and maintaining trust.
+
+Message: '{message}'
+Context: This is a {context_type} in the trust game.
+
+Rate the relevance of this message to achieving game goals on a scale of 0.0 to 1.0:
+- 1.0 = Highly relevant (directly addresses cooperation, strategy, or trust)
+- 0.5 = Moderately relevant (mentions goals indirectly)
+- 0.0 = Irrelevant (off-topic or empty)
+
+Respond with only a single floating-point number from 0.0 to 1.0.
+"""
+        
+        r_chain = ChatPromptTemplate.from_template(relevance_template) | analyzer_agent | StrOutputParser()
+        r_response = r_chain.invoke({"message": message, "context_type": context_type})
+        
+        try:
+            R = max(0.0, min(1.0, float(r_response.strip())))
+        except ValueError:
+            R = 0.5  # Default to moderate relevance if parsing fails
+        
+        return R
 
     def _apply_decay(self):
         """Applies the constant time decay to both scores."""
@@ -34,23 +145,24 @@ class TrustTracker:
         self.BTrust = max(0.01, self.BTrust - self.k_b)
 
     def _get_promise_scores(self, analyzer_agent, promise):
-        """Gets Q (Quality) and E (Emotion) scores for a *promise* (text)."""
+        """
+        Gets Q (Quality) using the LLM Analyzer.
+        Gets E (Emotion) using the deterministic VADER tool.
+        """
+        # --- 1. Get Quality (Q) from LLM Analyzer ---
         q_chain = ChatPromptTemplate.from_template(Q_PROMISE_TEMPLATE) | analyzer_agent | StrOutputParser()
-        e_chain = ChatPromptTemplate.from_template(E_PROMISE_TEMPLATE) | analyzer_agent | StrOutputParser()
-        
         q_response = q_chain.invoke({"message": promise})
         try:
             Q = max(0.0, min(1.0, float(q_response.strip())))
         except ValueError:
             Q = 0.0 
 
-        e_response = e_chain.invoke({"message": promise})
-        try:
-            score = float(e_response.strip())
-            E_pos = max(0, score)
-            E_neg = abs(min(0, score))
-        except ValueError:
-            E_pos, E_neg = 0.0, 0.0
+        # --- 2. Get Emotion (E_pos, E_neg) from VADER ---
+        vader_scores = self.vader_analyzer.polarity_scores(promise)
+        compound_score = vader_scores['compound'] # This is the -1.0 to +1.0 score
+        
+        E_pos = max(0, compound_score)
+        E_neg = abs(min(0, compound_score))
             
         return Q, E_pos, E_neg
 
@@ -63,10 +175,8 @@ class TrustTracker:
             return 0.0, 0.0, 0.0 # No action to score
 
         # --- Calculate Benevolence (Fairness) ---
-        # A 50/50 split of the *pot* is the baseline for "fairness".
         fair_return = pot_size / 2.0
         
-        # This formula maps the action to a -1.0 to +1.0 benevolence score.
         if fair_return == 0:
             benevolence_score = 0.0 if amount_returned == 0 else 1.0
         else:
@@ -80,34 +190,55 @@ class TrustTracker:
 
         # --- Calculate Competence (Rationality) ---
         # A rational move (Q=1.0) is any move that is not highly selfish
-        # (which would kill future cooperation).
-        # We define "rationality" as not being 100% selfish.
         Q_action = 1.0 - E_neg_action 
         
         return Q_action, E_pos_action, E_neg_action
 
     def update_trust_from_promise(self, analyzer_agent, promise):
-        """Updates trust based *only* on the agent's promise (their text)."""
+        """
+        Updates trust based *only* on the agent's promise (their text).
+        Now includes BOTH collaborative task component AND information gain component.
+        """
         self._apply_decay()
         
-        # Handle empty promises
         if not promise.strip():
             self.CTrust = self.CTrust - 0.1 # Penalize competence
             self.BTrust = self.BTrust - 0.1 # Penalize benevolence
             self._normalize_scores()
             return
 
-        f = self._get_f(promise)
+        # Get effort based on commitment level, not word count
+        f = self._get_promise_effort(analyzer_agent, promise)
+        # Get Q from LLM, but E_pos/E_neg from VADER
         Q, E_pos, E_neg = self._get_promise_scores(analyzer_agent, promise)
         
-        # Promise Quality updates Competence Trust
-        ct_bonus = (Q * (f + self.D)) / math.log(self.CTrust + self.e - 1)
-        self.CTrust = self.CTrust + min(0.1, ct_bonus) # Cap the bonus
+        # Calculate information gain components
+        I = self._calculate_information_novelty(promise)  # Information novelty
+        R = self._calculate_goal_relevance(analyzer_agent, promise, "promise")  # Goal relevance
+        # E_pos is already calculated above (emotional valence from VADER)
+        
+        # === COLLABORATIVE TASK COMPONENT ===
+        # psi_collaborative = Q * (f + D)
+        psi_collaborative = Q * (f + self.D)
+        
+        # === INFORMATION GAIN COMPONENT ===
+        # psi_info_gain = I * R * E
+        psi_info_gain = I * R * E_pos
+        
+        # === COMBINE BOTH COMPONENTS FOR COMPETENCE TRUST ===
+        # Tnew = Told + psi / ln(Told + e - 1)
+        # We combine both psi components
+        psi_total_ct = psi_collaborative + psi_info_gain
+        ct_bonus = psi_total_ct / math.log(self.CTrust + self.e - 1)
+        self.CTrust = self.CTrust + min(0.1, ct_bonus)  # Cap the bonus
 
-        # Promise Emotion updates Benevolence Trust
+        # === BENEVOLENCE TRUST: Positive Emotional Valence ===
+        # For benevolence, we use emotional valence (E_pos)
         if E_pos > 0:
             bt_bonus = E_pos / math.log(self.BTrust + self.e - 1)
-            self.BTrust = self.BTrust + min(0.1, bt_bonus) # Cap the bonus
+            self.BTrust = self.BTrust + min(0.1, bt_bonus)  # Cap the bonus
+        
+        # === NEGATIVE INTERACTIONS: Trust deteriorates ===
         if E_neg > 0:
             self.BTrust = self.BTrust * (1 - E_neg)
             
@@ -116,12 +247,15 @@ class TrustTracker:
     def update_trust_from_action_sender(self, amount_sent, sender_money):
         """
         Updates the Receiver's trust in the Sender based on the Sender's action.
+        Includes both collaborative task component AND information gain.
         This is a 100% deterministic calculation.
         """
         if sender_money <= 0:
             return # Avoid division by zero
-            
-        # Benevolence: Sending 0 is -1.0. Sending 50% is 0.0. Sending 100% is 1.0.
+        
+        # Effort for sender = proportion of their money they're willing to risk
+        f_action = amount_sent / sender_money  # 0.0 to 1.0
+        
         fair_send = sender_money / 2.0
         
         if fair_send == 0:
@@ -132,17 +266,38 @@ class TrustTracker:
         E_pos_action = max(0, benevolence_score)
         E_neg_action = abs(min(0, benevolence_score))
 
-        # Competence: A rational move is not 100% selfish.
         Q_action = 1.0 - E_neg_action
         
-        # Update CTrust
-        ct_bonus = (Q_action * (0.5 + self.D)) / math.log(self.CTrust + self.e - 1)
+        # === COLLABORATIVE TASK COMPONENT ===
+        # psi_collaborative = Q * (f + D)
+        psi_collaborative = Q_action * (f_action + self.D)
+        
+        # === INFORMATION GAIN FROM ACTION ===
+        # For actions, we consider the novelty of the strategy (amount sent)
+        # R (relevance) is high for actions (1.0) since they directly affect goals
+        # I (novelty) is based on how different this action is from expected behavior
+        # Expected behavior is fair_send, so novelty is deviation normalized
+        expected_ratio = 0.5  # Fair split
+        actual_ratio = amount_sent / sender_money
+        I_action = abs(actual_ratio - expected_ratio) / 0.5  # Normalize deviation
+        I_action = min(1.0, I_action)  # Cap at 1.0
+        
+        R_action = 1.0  # Actions are always highly relevant to game goals
+        # E_pos_action is emotional valence (already calculated above)
+        
+        psi_info_gain = I_action * R_action * E_pos_action
+        
+        # === COMBINE BOTH COMPONENTS FOR COMPETENCE TRUST ===
+        psi_total = psi_collaborative + psi_info_gain
+        ct_bonus = psi_total / math.log(self.CTrust + self.e - 1)
         self.CTrust = self.CTrust + min(0.1, ct_bonus)
         
-        # Update BTrust
+        # === BENEVOLENCE TRUST: Positive Emotional Valence ===
         if E_pos_action > 0:
             bt_bonus = E_pos_action / math.log(self.BTrust + self.e - 1)
             self.BTrust = self.BTrust + min(0.1, bt_bonus)
+        
+        # === NEGATIVE INTERACTIONS ===
         if E_neg_action > 0:
             self.BTrust = self.BTrust * (1 - E_neg_action)
             
@@ -151,22 +306,46 @@ class TrustTracker:
     def update_trust_from_action_receiver(self, pot_size, amount_sent_back):
         """
         Updates trust based *only* on the receiver's action (the money).
+        Includes both collaborative task component AND information gain.
         *** THIS FUNCTION IS NOW 100% DETERMINISTIC ***
         """
-        f = 0.5 # Effort for an action is fixed
+        if pot_size <= 0:
+            return  # Avoid division by zero
+        
+        # Effort for receiver = proportion of pot they return (generosity/sacrifice)
+        f_action = amount_sent_back / pot_size  # 0.0 to 1.0
         
         Q_action, E_pos_action, E_neg_action = self._get_deterministic_action_scores(
             pot_size, amount_sent_back
         )
         
-        # Rational action updates Competence Trust
-        ct_bonus = (Q_action * (f + self.D)) / math.log(self.CTrust + self.e - 1)
+        # === COLLABORATIVE TASK COMPONENT ===
+        # psi_collaborative = Q * (f + D)
+        psi_collaborative = Q_action * (f_action + self.D)
+        
+        # === INFORMATION GAIN FROM ACTION ===
+        # Calculate novelty based on deviation from expected fair return
+        expected_ratio = 0.5  # Fair split
+        actual_ratio = amount_sent_back / pot_size
+        I_action = abs(actual_ratio - expected_ratio) / 0.5  # Normalize deviation
+        I_action = min(1.0, I_action)  # Cap at 1.0
+        
+        R_action = 1.0  # Actions are always highly relevant to game goals
+        # E_pos_action already calculated above
+        
+        psi_info_gain = I_action * R_action * E_pos_action
+        
+        # === COMBINE BOTH COMPONENTS FOR COMPETENCE TRUST ===
+        psi_total = psi_collaborative + psi_info_gain
+        ct_bonus = psi_total / math.log(self.CTrust + self.e - 1)
         self.CTrust = self.CTrust + min(0.1, ct_bonus)
 
-        # Fair/Selfish action updates Benevolence Trust
+        # === BENEVOLENCE TRUST: Positive Emotional Valence ===
         if E_pos_action > 0:
             bt_bonus = E_pos_action / math.log(self.BTrust + self.e - 1)
             self.BTrust = self.BTrust + min(0.1, bt_bonus)
+        
+        # === NEGATIVE INTERACTIONS ===
         if E_neg_action > 0:
             # This will now trigger properly on selfish moves
             self.BTrust = self.BTrust * (1 - E_neg_action)
@@ -184,8 +363,6 @@ class TrustTracker:
 # --- 2. AGENT AND PROMPT CONFIGURATION ---
 
 mistral = OllamaLLM(model="mistral")
-
-# *** Prompts are now "Trust-Aware" ***
 
 SENDER_TEMPLATE = """You are {role}. You are given {money} dollars. You can send any amount (0 to {money}) to a Receiver.
 The amount you send will be doubled. The Receiver will then decide how much to send back.
@@ -223,7 +400,7 @@ Thank you for trusting me. I will send a fair portion back.
 Amount: 8
 """
 
-# --- Analyzer Prompts (ONLY FOR TEXT) ---
+# --- Analyzer Prompts (ONLY FOR TEXT QUALITY) ---
 
 Q_PROMISE_TEMPLATE = """
 You are an objective AI evaluator. Score the *quality* of this promise in an investment game.
@@ -232,13 +409,6 @@ A low-quality promise (0.0) is irrational, vague, or purely selfish.
 The PROMISE is: '{message}'.
 Respond with only a single floating-point number from 0.0 to 1.0.
 """
-
-E_PROMISE_TEMPLATE = """
-You are an objective AI sentiment analyzer. Score the *emotional valence* of this message.
-Respond with only a single floating-point number from -1.0 (very negative) to 1.0 (very positive).
-The MESSAGE is: '{message}'.
-"""
-# Note: The Q_ACTION and E_ACTION prompts are now gone, as they are replaced by pure math.
 
 # --- 3. GAME LOGIC ---
 
@@ -262,13 +432,12 @@ def run_round(sender_money, rounds_left, sender_acc, receiver_acc, s_memory, r_m
     sender_chain = ChatPromptTemplate.from_template(SENDER_TEMPLATE) | mistral | StrOutputParser()
     receiver_chain = ChatPromptTemplate.from_template(RECEIVER_TEMPLATE) | mistral | StrOutputParser()
     
-    # Pass trust scores into the agent's prompt
     s_output = sender_chain.invoke({
         "money": sender_money, "role": "Sender", "rounds": rounds_left,
         "sender_acc": sender_acc, "receiver_acc": receiver_acc,
         "memory": "\n".join(s_memory[-2:]),
-        "s_ctrust": s_trust_scores[0], # Sender's CTrust in Receiver
-        "s_btrust": s_trust_scores[1]  # Sender's BTrust in Receiver
+        "s_ctrust": s_trust_scores[0],
+        "s_btrust": s_trust_scores[1]
     })
     s_promise, amount_sent = parse_output(s_output)
     amount_sent = max(0, min(sender_money, amount_sent))
@@ -276,14 +445,13 @@ def run_round(sender_money, rounds_left, sender_acc, receiver_acc, s_memory, r_m
     
     received_doubled = amount_sent * 2
     
-    # Pass trust scores into the agent's prompt
     r_output = receiver_chain.invoke({
         "money": amount_sent, "money2": received_doubled, "role": "Receiver",
         "rounds": rounds_left, "sender_acc": sender_acc - amount_sent,
         "receiver_acc": receiver_acc + received_doubled,
         "memory": "\n".join(r_memory[-2:]),
-        "r_ctrust": r_trust_scores[0], # Receiver's CTrust in Sender
-        "r_btrust": r_trust_scores[1]  # Receiver's BTrust in Sender
+        "r_ctrust": r_trust_scores[0],
+        "r_btrust": r_trust_scores[1]
     })
     r_promise, amount_sent_back = parse_output(r_output)
     amount_sent_back = max(0, min(received_doubled, amount_sent_back))
@@ -297,7 +465,8 @@ def run_game(start_money, game_number, df, rounds, env_params):
     s_memory = []
     r_memory = []
     
-    # We still need the analyzer for promises
+    # We still need the analyzer for *Promise Quality (Q)*Centipede Game
+
     analyzer_agent = OllamaLLM(model="llama3.2", temperature=0.0)
 
     S_trust_in_R = TrustTracker("S_trust_in_R", **env_params)
@@ -308,21 +477,17 @@ def run_game(start_money, game_number, df, rounds, env_params):
         print(f"Round {round_num + 1}:")
         print(f"Sender: ${sender_acc}, Receiver: ${receiver_acc}")
         
-        # Get trust scores *before* the round to log them
         s_ct_pre, s_bt_pre = S_trust_in_R.get_scores()
         r_ct_pre, r_bt_pre = R_trust_in_S.get_scores()
         
-        # Print the pre-round trust scores that the agents will use
         print(f"  [S_trust_in_R (PRE): (CT: {s_ct_pre:.2f}, BT: {s_bt_pre:.2f})]")
         print(f"  [R_trust_in_S (PRE): (CT: {r_ct_pre:.2f}, BT: {r_bt_pre:.2f})]")
 
-        # Handle case where Sender has no money
         if sender_acc <= 0:
             print("Sender has no money to send. Skipping round.")
             amount_sent, amount_sent_back, s_promise, r_promise = 0, 0, "[SKIPPED]", "[SKIPPED]"
             pot_size = 0
         else:
-            # Pass current trust scores to run_round
             amount_sent, amount_sent_back, s_promise, r_promise, s_memory, r_memory = run_round(
                 sender_acc, rounds - (round_num + 1), sender_acc, receiver_acc, s_memory, r_memory,
                 s_trust_scores=(s_ct_pre, s_bt_pre),
@@ -339,17 +504,12 @@ def run_game(start_money, game_number, df, rounds, env_params):
         
         # 2. Agents update trust based on *actions* (now deterministic)
         print(f"  Analyzing actions...")
-        
-        # Receiver observes Sender's action
         R_trust_in_S.update_trust_from_action_sender(amount_sent, sender_acc)
-        
-        # Sender observes Receiver's action
         S_trust_in_R.update_trust_from_action_receiver(pot_size, amount_sent_back)
         
         print(f"Sender: {s_promise} (Sent: {amount_sent})")
         print(f"Receiver: {r_promise} (Sent back: {amount_sent_back})")
         
-        # Print the *new* trust scores after the update
         s_ct_post, s_bt_post = S_trust_in_R.get_scores()
         r_ct_post, r_bt_post = R_trust_in_S.get_scores()
         print(f"  [S_trust_in_R (POST): (CT: {s_ct_post:.2f}, BT: {s_bt_post:.2f})]")
@@ -392,7 +552,7 @@ if __name__ == "__main__":
     }
     
     # Simulation Parameters
-    NUM_GAMES = 5
+    NUM_GAMES = 10
     NUM_ROUNDS = 10
     INITIAL_MONEY = 15
 
